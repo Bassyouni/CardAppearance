@@ -18,7 +18,7 @@ final class MagicViewController: UIViewController {
     
     private let fakeStatusBarContainerView = UIView()
     private let timeLabel = UILabel()
-    private let batteryImageView = UIImageView(image: #imageLiteral(resourceName: "batteryIcon"))
+    private let batteryView = BatteryView()
     
     // MARK: - Variables
     private let viewModel: MagicViewModelInterface
@@ -44,6 +44,11 @@ final class MagicViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        batteryView.setNeedsDisplay()
+    }
+    
     // MARK: - Initialization
     private func setupViews() {
         view.addSubview(topLeadingButton)
@@ -51,15 +56,22 @@ final class MagicViewController: UIViewController {
         view.addSubview(bottomLeadingButton)
         view.addSubview(bottomTrailingButton)
         view.addSubview(fakeStatusBarContainerView)
+        view.addSubview(batteryView)
         fakeStatusBarContainerView.addSubview(timeLabel)
-        fakeStatusBarContainerView.addSubview(batteryImageView)
+        fakeStatusBarContainerView.addSubview(batteryView)
         topLeadingButton.backgroundColor = .red
         topTrailingButton.backgroundColor = .blue
         bottomLeadingButton.backgroundColor = .yellow
         bottomTrailingButton.backgroundColor = .green
         view.backgroundColor = .black
-        batteryImageView.backgroundColor = .white
+        
         timeLabel.textColor = .white
+        timeLabel.font = .systemFont(ofSize: 15)
+        timeLabel.text = "\(UIDevice.current.batteryLevel)"
+        
+        batteryView.center = view.center
+        batteryView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        batteryView.center = view.center
     }
     
     private func setupConstraints() {
@@ -69,6 +81,9 @@ final class MagicViewController: UIViewController {
         topTrailingButton.translatesAutoresizingMaskIntoConstraints = false
         bottomLeadingButton.translatesAutoresizingMaskIntoConstraints = false
         bottomTrailingButton.translatesAutoresizingMaskIntoConstraints = false
+        fakeStatusBarContainerView.translatesAutoresizingMaskIntoConstraints = false
+        batteryView.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(contentsOf: addWidthAndHeightConstraints(for: topLeadingButton))
         constraints.append(contentsOf: addWidthAndHeightConstraints(for: topTrailingButton))
         constraints.append(contentsOf: addWidthAndHeightConstraints(for: bottomLeadingButton))
@@ -85,6 +100,19 @@ final class MagicViewController: UIViewController {
         
         constraints.append(bottomTrailingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor))
         constraints.append(bottomTrailingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor))
+        
+        constraints.append(fakeStatusBarContainerView.topAnchor.constraint(equalTo: view.topAnchor))
+        constraints.append(fakeStatusBarContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
+        constraints.append(fakeStatusBarContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
+        constraints.append(fakeStatusBarContainerView.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height ))
+        
+        constraints.append(timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20))
+        constraints.append(timeLabel.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor))
+        
+        constraints.append(batteryView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15))
+        constraints.append(batteryView.widthAnchor.constraint(equalToConstant: 25))
+        constraints.append(batteryView.heightAnchor.constraint(equalToConstant: 20))
+        constraints.append(batteryView.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor))
         
         constraints.forEach { $0.isActive = true }
     }

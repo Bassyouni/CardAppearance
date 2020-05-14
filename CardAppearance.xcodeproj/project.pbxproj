@@ -19,6 +19,7 @@
 		8C30FB9D246DED5500B03A7A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FB9C246DED5500B03A7A /* RxRelay */; };
 		8C30FB9F246DED5500B03A7A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FB9E246DED5500B03A7A /* RxSwift */; };
 		8C30FBA1246DED5500B03A7A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FBA0246DED5500B03A7A /* RxCocoa */; };
+		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModel.swift; sourceTree = "<group>"; };
 		8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelInterface.swift; sourceTree = "<group>"; };
 		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
+		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */,
 				8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */,
 				8C1E0B14246CCE2E005E5C95 /* Info.plist */,
+				8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */,
 			);
 			path = CardAppearance;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */,
 				8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */,
 				8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */,
 				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,
@@ -377,7 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9APBUX8U9;
+				DEVELOPMENT_TEAM = S94ZH48WVV;
 				INFOPLIST_FILE = CardAppearance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -395,7 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9APBUX8U9;
+				DEVELOPMENT_TEAM = S94ZH48WVV;
 				INFOPLIST_FILE = CardAppearance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
