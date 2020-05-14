@@ -16,11 +16,15 @@ final class MagicViewController: UIViewController {
     private let bottomLeadingButton = UIButton()
     private let bottomTrailingButton = UIButton()
     
+    private let fakeStatusBarContainerView = UIView()
+    private let timeLabel = UILabel()
+    private let batteryImageView = UIImageView(image: #imageLiteral(resourceName: "batteryIcon"))
+    
     // MARK: - Variables
     private let viewModel: MagicViewModelInterface
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     // MARK: - Initializers
@@ -43,15 +47,19 @@ final class MagicViewController: UIViewController {
     // MARK: - Initialization
     private func setupViews() {
         view.addSubview(topLeadingButton)
-        topLeadingButton.backgroundColor = .red
         view.addSubview(topTrailingButton)
-        topTrailingButton.backgroundColor = .blue
         view.addSubview(bottomLeadingButton)
-        bottomLeadingButton.backgroundColor = .yellow
         view.addSubview(bottomTrailingButton)
+        view.addSubview(fakeStatusBarContainerView)
+        fakeStatusBarContainerView.addSubview(timeLabel)
+        fakeStatusBarContainerView.addSubview(batteryImageView)
+        topLeadingButton.backgroundColor = .red
+        topTrailingButton.backgroundColor = .blue
+        bottomLeadingButton.backgroundColor = .yellow
         bottomTrailingButton.backgroundColor = .green
-        
         view.backgroundColor = .black
+        batteryImageView.backgroundColor = .white
+        timeLabel.textColor = .white
     }
     
     private func setupConstraints() {
