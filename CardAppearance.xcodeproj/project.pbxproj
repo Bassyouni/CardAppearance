@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */; };
 		8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */; };
-		8C1E0B0B246CCE2B005E5C95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0A246CCE2B005E5C95 /* ViewController.swift */; };
-		8C1E0B0E246CCE2B005E5C95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0C246CCE2B005E5C95 /* Main.storyboard */; };
+		8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */; };
 		8C1E0B10246CCE2E005E5C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */; };
 		8C1E0B13246CCE2E005E5C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */; };
 		8C1E0B1E246CCE2E005E5C95 /* CardAppearanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */; };
+		8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */; };
+		8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */; };
+		8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +32,16 @@
 		8C1E0B03246CCE2B005E5C95 /* CardAppearance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardAppearance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8C1E0B0A246CCE2B005E5C95 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8C1E0B0D246CCE2B005E5C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewController.swift; sourceTree = "<group>"; };
 		8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C1E0B12246CCE2E005E5C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C1E0B14246CCE2E005E5C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C1E0B19246CCE2E005E5C95 /* CardAppearanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardAppearanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAppearanceTests.swift; sourceTree = "<group>"; };
 		8C1E0B1F246CCE2E005E5C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModel.swift; sourceTree = "<group>"; };
+		8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelInterface.swift; sourceTree = "<group>"; };
+		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +85,9 @@
 			children = (
 				8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */,
 				8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */,
-				8C1E0B0A246CCE2B005E5C95 /* ViewController.swift */,
-				8C1E0B0C246CCE2B005E5C95 /* Main.storyboard */,
+				8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */,
+				8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */,
+				8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */,
 				8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */,
 				8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */,
 				8C1E0B14246CCE2E005E5C95 /* Info.plist */,
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */,
+				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
 				8C1E0B1F246CCE2E005E5C95 /* Info.plist */,
 			);
 			path = CardAppearanceTests;
@@ -182,7 +188,6 @@
 			files = (
 				8C1E0B13246CCE2E005E5C95 /* LaunchScreen.storyboard in Resources */,
 				8C1E0B10246CCE2E005E5C95 /* Assets.xcassets in Resources */,
-				8C1E0B0E246CCE2B005E5C95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C1E0B0B246CCE2B005E5C95 /* ViewController.swift in Sources */,
+				8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */,
+				8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */,
+				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,
 				8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */,
 				8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */,
 			);
@@ -210,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
 				8C1E0B1E246CCE2E005E5C95 /* CardAppearanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +233,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8C1E0B0C246CCE2B005E5C95 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C1E0B0D246CCE2B005E5C95 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -372,7 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bassyouni.CardAppearance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -390,7 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bassyouni.CardAppearance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

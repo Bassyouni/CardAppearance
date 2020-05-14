@@ -1,0 +1,34 @@
+//
+//  MagicViewModelMock.swift
+//  CardAppearanceTests
+//
+//  Created by Omar Bassyouni on 5/14/20.
+//  Copyright © 2020 Omar Bassyouni. All rights reserved.
+//
+
+import Foundation
+@testable import CardAppearance
+
+final class MagicViewModelMock: MagicViewModelInterface {
+
+    var isTopLeadingQuadrantTapped: Bool = false
+    var isTopTrailingQuadrantTapped: Bool = false
+    var isBottomLeadingQuadrantTapped: Bool = false
+    var isBottomTrailingQuadrantTapped: Bool = false
+
+    func didTapTopLeadingQuadrant() {
+        isTopLeadingQuadrantTapped = true
+    }
+
+    func didTapTopTrailingQuadrant() {
+        isTopTrailingQuadrantTapped = true
+    }
+
+    func didTapBottomLeadingQuadrant() {
+        isBottomLeadingQuadrantTapped = true
+    }
+
+    func didTapBottomTrailingQuadrant() {
+        isBottomTrailingQuadrantTapped = true
+    }
+}
