@@ -24,7 +24,7 @@ final class MagicViewController: UIViewController {
     private let viewModel: MagicViewModelInterface
     
     override var prefersStatusBarHidden: Bool {
-        return false
+        return true
     }
     
     // MARK: - Initializers
