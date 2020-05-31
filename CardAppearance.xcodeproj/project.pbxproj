@@ -20,6 +20,7 @@
 		8C30FB9F246DED5500B03A7A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FB9E246DED5500B03A7A /* RxSwift */; };
 		8C30FBA1246DED5500B03A7A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FBA0246DED5500B03A7A /* RxCocoa */; };
 		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
+		8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelInterface.swift; sourceTree = "<group>"; };
 		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
+		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */,
 				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
+				8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */,
 				8C1E0B1F246CCE2E005E5C95 /* Info.plist */,
 			);
 			path = CardAppearanceTests;
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
+				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,
 				8C1E0B1E246CCE2E005E5C95 /* CardAppearanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,3 +26,14 @@ final class MagicViewModel: MagicViewModelInterface {
         
     }
 }
+
+// MARK: - Public
+extension MagicViewModel {
+    var currentTimeHours: Int {
+        return Calendar.current.component(.hour, from: Date())
+    }
+    
+    var currentTimeMinutes: Int {
+        return Calendar.current.component(.minute, from: Date())
+    }
+}

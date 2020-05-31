@@ -13,4 +13,7 @@ protocol MagicViewModelInterface {
     func didTapTopTrailingQuadrant()
     func didTapBottomLeadingQuadrant()
     func didTapBottomTrailingQuadrant()
+    
+    var currentTimeHours: Int { get }
+    var currentTimeMinutes: Int { get }
 }

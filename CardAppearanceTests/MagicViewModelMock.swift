@@ -10,6 +10,14 @@ import Foundation
 @testable import CardAppearance
 
 final class MagicViewModelMock: MagicViewModelInterface {
+   
+    var currentTimeHours: Int {
+        return 0
+    }
+    
+    var currentTimeMinutes: Int {
+        return 0
+    }
 
     var isTopLeadingQuadrantTapped: Bool = false
     var isTopTrailingQuadrantTapped: Bool = false

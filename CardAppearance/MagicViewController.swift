@@ -64,14 +64,12 @@ final class MagicViewController: UIViewController {
         bottomLeadingButton.backgroundColor = .yellow
         bottomTrailingButton.backgroundColor = .green
         view.backgroundColor = .black
-        
         timeLabel.textColor = .white
         timeLabel.font = .systemFont(ofSize: 15)
-        timeLabel.text = "\(UIDevice.current.batteryLevel)"
-        
         batteryView.center = view.center
         batteryView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         batteryView.center = view.center
+        timeLabel.text = "\(viewModel.currentTimeHours):\(viewModel.currentTimeMinutes)"
     }
     
     private func setupConstraints() {
