@@ -1,6 +1,6 @@
 //
-//  CardAppearanceTests.swift
-//  CardAppearanceTests
+//  MagicViewControllerTests.swift
+//  MagicViewControllerTests
 //
 //  Created by Omar Bassyouni on 5/14/20.
 //  Copyright © 2020 Omar Bassyouni. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import CardAppearance
 
-class CardAppearanceTests: XCTestCase {
+class MagicViewControllerTests: XCTestCase {
     
     var sut: MagicViewController!
     var mockViewModel: MagicViewModelMock!

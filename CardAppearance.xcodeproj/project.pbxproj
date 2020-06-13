@@ -12,7 +12,7 @@
 		8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */; };
 		8C1E0B10246CCE2E005E5C95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */; };
 		8C1E0B13246CCE2E005E5C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */; };
-		8C1E0B1E246CCE2E005E5C95 /* CardAppearanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */; };
+		8C1E0B1E246CCE2E005E5C95 /* MagicViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B1D246CCE2E005E5C95 /* MagicViewControllerTests.swift */; };
 		8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */; };
 		8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */; };
 		8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */; };
@@ -42,7 +42,7 @@
 		8C1E0B12246CCE2E005E5C95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C1E0B14246CCE2E005E5C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C1E0B19246CCE2E005E5C95 /* CardAppearanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardAppearanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAppearanceTests.swift; sourceTree = "<group>"; };
+		8C1E0B1D246CCE2E005E5C95 /* MagicViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewControllerTests.swift; sourceTree = "<group>"; };
 		8C1E0B1F246CCE2E005E5C95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModel.swift; sourceTree = "<group>"; };
 		8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelInterface.swift; sourceTree = "<group>"; };
@@ -72,6 +72,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C07FBBB2494DD2800E97F94 /* Scene & App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */,
+				8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */,
+			);
+			path = "Scene & App Delegate";
+			sourceTree = "<group>";
+		};
+		8C07FBBC2494DD3700E97F94 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8C07FBBD2494DD5400E97F94 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8C07FBBE2494DD5C00E97F94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C07FBBF2494DD6C00E97F94 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */,
+				8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		8C07FBC02494DDAE00E97F94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C07FBC12494DDB300E97F94 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
+				8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		8C07FBC22494DDB900E97F94 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E0B1D246CCE2E005E5C95 /* MagicViewControllerTests.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		8C1E0AFA246CCE2B005E5C95 = {
 			isa = PBXGroup;
 			children = (
@@ -93,15 +158,14 @@
 		8C1E0B05246CCE2B005E5C95 /* CardAppearance */ = {
 			isa = PBXGroup;
 			children = (
-				8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */,
-				8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */,
-				8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */,
-				8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */,
-				8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */,
+				8C07FBBB2494DD2800E97F94 /* Scene & App Delegate */,
+				8C07FBBE2494DD5C00E97F94 /* Models */,
+				8C07FBBF2494DD6C00E97F94 /* View Models */,
+				8C07FBBC2494DD3700E97F94 /* Controllers */,
+				8C07FBBD2494DD5400E97F94 /* Views */,
 				8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */,
 				8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */,
 				8C1E0B14246CCE2E005E5C95 /* Info.plist */,
-				8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */,
 			);
 			path = CardAppearance;
 			sourceTree = "<group>";
@@ -109,9 +173,9 @@
 		8C1E0B1C246CCE2E005E5C95 /* CardAppearanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C1E0B1D246CCE2E005E5C95 /* CardAppearanceTests.swift */,
-				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
-				8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */,
+				8C07FBC02494DDAE00E97F94 /* Models */,
+				8C07FBC12494DDB300E97F94 /* View Models */,
+				8C07FBC22494DDB900E97F94 /* Controllers */,
 				8C1E0B1F246CCE2E005E5C95 /* Info.plist */,
 			);
 			path = CardAppearanceTests;
@@ -240,7 +304,7 @@
 			files = (
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
 				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,
-				8C1E0B1E246CCE2E005E5C95 /* CardAppearanceTests.swift in Sources */,
+				8C1E0B1E246CCE2E005E5C95 /* MagicViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
