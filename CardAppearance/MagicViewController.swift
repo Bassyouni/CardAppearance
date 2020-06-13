@@ -112,7 +112,7 @@ final class MagicViewController: UIViewController {
         constraints.append(batteryView.heightAnchor.constraint(equalToConstant: 20))
         constraints.append(batteryView.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor))
         
-        constraints.forEach { $0.isActive = true }
+        NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: - Actions
