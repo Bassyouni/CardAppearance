@@ -18,6 +18,8 @@
 		8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */; };
 		8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */; };
 		8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */; };
+		8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */; };
+		8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */; };
 		8C30FB9D246DED5500B03A7A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FB9C246DED5500B03A7A /* RxRelay */; };
 		8C30FB9F246DED5500B03A7A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FB9E246DED5500B03A7A /* RxSwift */; };
 		8C30FBA1246DED5500B03A7A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8C30FBA0246DED5500B03A7A /* RxCocoa */; };
@@ -51,6 +53,8 @@
 		8C1E0B28246CCFCF005E5C95 /* MagicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModel.swift; sourceTree = "<group>"; };
 		8C1E0B2A246CCFDF005E5C95 /* MagicViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelInterface.swift; sourceTree = "<group>"; };
 		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
+		8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCaseTests.swift; sourceTree = "<group>"; };
+		8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCase.swift; sourceTree = "<group>"; };
 		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +170,7 @@
 			children = (
 				8C07FBBB2494DD2800E97F94 /* Scene & App Delegate */,
 				8C07FBBE2494DD5C00E97F94 /* Models */,
+				8C29E99024954D0A00FCD778 /* Use Cases */,
 				8C07FBBF2494DD6C00E97F94 /* View Models */,
 				8C07FBBC2494DD3700E97F94 /* Controllers */,
 				8C07FBBD2494DD5400E97F94 /* Views */,
@@ -180,11 +185,28 @@
 			isa = PBXGroup;
 			children = (
 				8C07FBC02494DDAE00E97F94 /* Models */,
+				8C29E98D24954CAA00FCD778 /* Use Cases */,
 				8C07FBC12494DDB300E97F94 /* View Models */,
 				8C07FBC22494DDB900E97F94 /* Controllers */,
 				8C1E0B1F246CCE2E005E5C95 /* Info.plist */,
 			);
 			path = CardAppearanceTests;
+			sourceTree = "<group>";
+		};
+		8C29E98D24954CAA00FCD778 /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */,
+			);
+			path = "Use Cases";
+			sourceTree = "<group>";
+		};
+		8C29E99024954D0A00FCD778 /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */,
+			);
+			path = "Use Cases";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +324,7 @@
 				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,
 				8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */,
 				8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */,
+				8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
+				8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */,
 				8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */,
 				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,
 				8C1E0B1E246CCE2E005E5C95 /* MagicViewControllerTests.swift in Sources */,
