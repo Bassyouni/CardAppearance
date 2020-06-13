@@ -99,11 +99,7 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertNil(cardImageView?.image)
     }
     
-    func testFakeStatusBar_whenShowingSelectedCard_fakeStatusBarIsHidden() {
-        // given
-        let cardSelected = CardType.aceOfClubs
-        let cardImage = UIImage(named: cardSelected.imageName)
-        
+    func testFakeStatusBar_whenShowingSelectedCard_fakeStatusBarIsHidden() {        
         // when
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         

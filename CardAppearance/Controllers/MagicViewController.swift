@@ -51,7 +51,6 @@ final class MagicViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         batteryView.setNeedsDisplay()
-        print(view.window?.windowScene?.statusBarManager?.statusBarFrame.height )
     }
     
     // MARK: - Initialization
