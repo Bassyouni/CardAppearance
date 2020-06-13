@@ -14,16 +14,18 @@ class MagicViewControllerTests: XCTestCase {
     var sut: MagicViewController!
     var mockViewModel: MagicViewModelMock!
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    override func setUp() {
+        super.setUp()
         mockViewModel = MagicViewModelMock()
         sut = MagicViewController(viewModel: mockViewModel)
+        
+        sut.loadViewIfNeeded()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         sut = nil
         mockViewModel = nil
-        try super.tearDownWithError()
+        super.tearDown()
     }
 
     // MARK: - Quadrent Actions
@@ -64,4 +66,19 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.prefersStatusBarHidden)
     }
     
+    
+    // MARK: - Card Appearance Behaviour's
+    func testUI_whenShowingSelectedCard_cardImageIsOnTopVisible() {
+        // given
+        let cardSelected = CardType.aceOfClubs
+        let cardImage = UIImage(named: cardSelected.imageName)
+        
+        // When
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        // Then
+        let cardImageView = sut.view.subviews.last as? UIImageView
+        XCTAssertNotNil(cardImageView)
+        XCTAssertEqual(cardImageView?.image?.pngData(), cardImage?.pngData())
+    }
 }

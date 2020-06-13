@@ -6,12 +6,21 @@
 //  Copyright © 2020 Omar Bassyouni. All rights reserved.
 //
 
+import RxSwift
 import Foundation
 
 final class MagicViewModel: MagicViewModelInterface {
+    
+    // MARK: - Variables
+    private let showCardSubject = PublishSubject<CardType>()
+    
+    var showCardObservable: Observable<CardType> {
+        return showCardSubject.asObservable()
+    }
+    
    
     func didTapTopLeadingQuadrant() {
-        
+        showCardSubject.onNext(.aceOfClubs)
     }
 
     func didTapTopTrailingQuadrant() {

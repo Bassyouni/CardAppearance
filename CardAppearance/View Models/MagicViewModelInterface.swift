@@ -6,6 +6,7 @@
 //  Copyright © 2020 Omar Bassyouni. All rights reserved.
 //
 
+import RxSwift
 import Foundation
 
 protocol MagicViewModelInterface {
@@ -16,4 +17,5 @@ protocol MagicViewModelInterface {
     
     var currentTimeHours: Int { get }
     var currentTimeMinutes: Int { get }
+    var showCardObservable: Observable<CardType> { get }
 }

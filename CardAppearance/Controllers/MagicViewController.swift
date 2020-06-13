@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class MagicViewController: UIViewController {
     
@@ -19,9 +20,11 @@ final class MagicViewController: UIViewController {
     private let fakeStatusBarContainerView = UIView()
     private let timeLabel = UILabel()
     private let batteryView = BatteryView()
+    private let cardImageView = UIImageView()
     
     // MARK: - Variables
     private let viewModel: MagicViewModelInterface
+    private let bag = DisposeBag()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -42,6 +45,7 @@ final class MagicViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupBindings()
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,6 +55,7 @@ final class MagicViewController: UIViewController {
     
     // MARK: - Initialization
     private func setupViews() {
+        view.addSubview(cardImageView)
         view.addSubview(topLeadingButton)
         view.addSubview(topTrailingButton)
         view.addSubview(bottomLeadingButton)
@@ -59,6 +64,7 @@ final class MagicViewController: UIViewController {
         view.addSubview(batteryView)
         fakeStatusBarContainerView.addSubview(timeLabel)
         fakeStatusBarContainerView.addSubview(batteryView)
+        cardImageView.contentMode = .scaleAspectFit
         topLeadingButton.backgroundColor = .red
         topTrailingButton.backgroundColor = .blue
         bottomLeadingButton.backgroundColor = .yellow
@@ -70,11 +76,16 @@ final class MagicViewController: UIViewController {
         batteryView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         batteryView.center = view.center
         timeLabel.text = "\(viewModel.currentTimeHours):\(viewModel.currentTimeMinutes)"
+        topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
+        topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
+        bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
+        bottomTrailingButton.addTarget(self, action: #selector(didTapBottomTrailingQuadrant), for: .touchUpInside)
     }
     
     private func setupConstraints() {
         var constraints = [NSLayoutConstraint]()
         view.translatesAutoresizingMaskIntoConstraints = false
+        cardImageView.translatesAutoresizingMaskIntoConstraints = false
         topLeadingButton.translatesAutoresizingMaskIntoConstraints = false
         topTrailingButton.translatesAutoresizingMaskIntoConstraints = false
         bottomLeadingButton.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +93,12 @@ final class MagicViewController: UIViewController {
         fakeStatusBarContainerView.translatesAutoresizingMaskIntoConstraints = false
         batteryView.translatesAutoresizingMaskIntoConstraints = false
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        constraints.append(cardImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
+        constraints.append(cardImageView.topAnchor.constraint(equalTo: view.topAnchor))
+        constraints.append(cardImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
+        constraints.append(cardImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
+        
         constraints.append(contentsOf: addWidthAndHeightConstraints(for: topLeadingButton))
         constraints.append(contentsOf: addWidthAndHeightConstraints(for: topTrailingButton))
         constraints.append(contentsOf: addWidthAndHeightConstraints(for: bottomLeadingButton))
@@ -113,6 +130,16 @@ final class MagicViewController: UIViewController {
         constraints.append(batteryView.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor))
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func setupBindings() {
+        viewModel.showCardObservable
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (cardType) in
+                guard let self = self else { return }
+                self.cardImageView.image = UIImage(named: cardType.imageName)
+                self.view.bringSubviewToFront(self.cardImageView)
+            }).disposed(by: bag)
     }
     
     // MARK: - Actions

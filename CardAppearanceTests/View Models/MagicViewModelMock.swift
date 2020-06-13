@@ -6,6 +6,7 @@
 //  Copyright © 2020 Omar Bassyouni. All rights reserved.
 //
 
+import RxSwift
 import Foundation
 @testable import CardAppearance
 
@@ -23,6 +24,12 @@ final class MagicViewModelMock: MagicViewModelInterface {
     var isTopTrailingQuadrantTapped: Bool = false
     var isBottomLeadingQuadrantTapped: Bool = false
     var isBottomTrailingQuadrantTapped: Bool = false
+    
+    let showCardSubject = PublishSubject<CardType>()
+    
+    var showCardObservable: Observable<CardType> {
+        return showCardSubject.asObservable()
+    }
 
     func didTapTopLeadingQuadrant() {
         isTopLeadingQuadrantTapped = true
