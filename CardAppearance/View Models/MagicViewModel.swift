@@ -14,11 +14,8 @@ final class MagicViewModel: MagicViewModelInterface {
     // MARK: - Variables
     private let showCardSubject = PublishSubject<CardType>()
     
-    var showCardObservable: Observable<CardType> {
-        return showCardSubject.asObservable()
-    }
-    
    
+   // MARK: - Actions
     func didTapTopLeadingQuadrant() {
         showCardSubject.onNext(.aceOfClubs)
     }
@@ -39,10 +36,14 @@ final class MagicViewModel: MagicViewModelInterface {
 // MARK: - Public
 extension MagicViewModel {
     var currentTimeHours: Int {
-        return Calendar.current.component(.hour, from: Date())
+        Calendar.current.component(.hour, from: Date())
     }
     
     var currentTimeMinutes: Int {
-        return Calendar.current.component(.minute, from: Date())
+        Calendar.current.component(.minute, from: Date())
+    }
+    
+    var showCardObservable: Observable<CardType> {
+        showCardSubject.asObservable()
     }
 }

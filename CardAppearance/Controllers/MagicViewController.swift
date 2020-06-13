@@ -17,7 +17,7 @@ final class MagicViewController: UIViewController {
     private let bottomLeadingButton = UIButton()
     private let bottomTrailingButton = UIButton()
     
-    private let fakeStatusBarContainerView = UIView()
+    let fakeStatusBarContainerView = UIView()
     private let timeLabel = UILabel()
     private let batteryView = BatteryView()
     private let cardImageView = UIImageView()
@@ -51,6 +51,7 @@ final class MagicViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         batteryView.setNeedsDisplay()
+        print(view.window?.windowScene?.statusBarManager?.statusBarFrame.height )
     }
     
     // MARK: - Initialization
@@ -141,6 +142,7 @@ final class MagicViewController: UIViewController {
                 guard let self = self else { return }
                 self.cardImageView.image = UIImage(named: cardType.imageName)
                 self.view.bringSubviewToFront(self.cardImageView)
+                self.fakeStatusBarContainerView.isHidden = true
             }).disposed(by: bag)
     }
     
@@ -164,6 +166,7 @@ final class MagicViewController: UIViewController {
     @objc func didTapCardImageView() {
         cardImageView.image = nil
         view.sendSubviewToBack(cardImageView)
+        fakeStatusBarContainerView.isHidden = false
     }
 }
  

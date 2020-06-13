@@ -66,6 +66,10 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.prefersStatusBarHidden)
     }
     
+    func testFakeStatusBarIsVisible() {
+        XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
+    }
+    
     
     // MARK: - Card Appearance Behaviour's
     func testCardImageView_whenShowingSelectedCard_cardImageIsOnTopVisible() {
@@ -93,5 +97,28 @@ class MagicViewControllerTests: XCTestCase {
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertNil(cardImageView?.image)
+    }
+    
+    func testFakeStatusBar_whenShowingSelectedCard_fakeStatusBarIsHidden() {
+        // given
+        let cardSelected = CardType.aceOfClubs
+        let cardImage = UIImage(named: cardSelected.imageName)
+        
+        // when
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        // then
+        XCTAssertTrue(sut.fakeStatusBarContainerView.isHidden)
+    }
+    
+    func testFakeStatusBar_whenCardImageTapped_fakeStatusBarIsVisible() {
+        // given
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        // When
+        sut.didTapCardImageView()
+        
+        // then
+        XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
     }
 }
