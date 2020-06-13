@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */; };
+		8C07FBC62494E08000E97F94 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07FBC52494E08000E97F94 /* CardType.swift */; };
 		8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */; };
 		8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */; };
 		8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTests.swift; sourceTree = "<group>"; };
+		8C07FBC52494E08000E97F94 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		8C1E0B03246CCE2B005E5C95 /* CardAppearance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardAppearance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E0B08246CCE2B005E5C95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 		8C07FBBE2494DD5C00E97F94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C07FBC52494E08000E97F94 /* CardType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 		8C07FBC02494DDAE00E97F94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */,
 				8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */,
 				8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */,
+				8C07FBC62494E08000E97F94 /* CardType.swift in Sources */,
 				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,
 				8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */,
 				8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */,
@@ -303,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
+				8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */,
 				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,
 				8C1E0B1E246CCE2E005E5C95 /* MagicViewControllerTests.swift in Sources */,
 			);
