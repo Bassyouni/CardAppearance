@@ -81,6 +81,7 @@ final class MagicViewController: UIViewController {
         bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
         bottomTrailingButton.addTarget(self, action: #selector(didTapBottomTrailingQuadrant), for: .touchUpInside)
         cardImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapCardImageView)))
+        cardImageView.isUserInteractionEnabled = true
     }
     
     private func setupConstraints() {
