@@ -6,6 +6,8 @@
 //  Copyright © 2020 Omar Bassyouni. All rights reserved.
 //
 
+import RxSwift
+import RxBlocking
 import XCTest
 @testable import CardAppearance
 
@@ -19,6 +21,10 @@ class CreateSecondsTimerUseCaseTests: XCTestCase {
     
     override func tearDown() {
         sut = nil
+    }
+    
+    func testSecondsObservable_initialState_equalsOne() throws {
+        XCTAssertEqual(try sut.secondsObservable.toBlocking().first(), 1)
     }
 
 }
