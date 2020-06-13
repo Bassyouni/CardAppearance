@@ -80,6 +80,7 @@ final class MagicViewController: UIViewController {
         topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
         bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
         bottomTrailingButton.addTarget(self, action: #selector(didTapBottomTrailingQuadrant), for: .touchUpInside)
+        cardImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapCardImageView)))
     }
     
     private func setupConstraints() {
@@ -157,6 +158,11 @@ final class MagicViewController: UIViewController {
     
     @objc func didTapBottomTrailingQuadrant() {
         viewModel.didTapBottomTrailingQuadrant()
+    }
+    
+    @objc func didTapCardImageView() {
+        cardImageView.image = nil
+        view.sendSubviewToBack(cardImageView)
     }
 }
  

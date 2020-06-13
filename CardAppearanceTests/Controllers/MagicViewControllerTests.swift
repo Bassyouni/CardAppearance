@@ -68,7 +68,7 @@ class MagicViewControllerTests: XCTestCase {
     
     
     // MARK: - Card Appearance Behaviour's
-    func testUI_whenShowingSelectedCard_cardImageIsOnTopVisible() {
+    func testCardImageView_whenShowingSelectedCard_cardImageIsOnTopVisible() {
         // given
         let cardSelected = CardType.aceOfClubs
         let cardImage = UIImage(named: cardSelected.imageName)
@@ -80,5 +80,18 @@ class MagicViewControllerTests: XCTestCase {
         let cardImageView = sut.view.subviews.last as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertEqual(cardImageView?.image?.pngData(), cardImage?.pngData())
+    }
+    
+    func testCardImageView_whenImageTapped_cardImageIsHidden() {
+        // given
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        // When
+        sut.didTapCardImageView()
+        
+        // Then
+        let cardImageView = sut.view.subviews.first as? UIImageView
+        XCTAssertNotNil(cardImageView)
+        XCTAssertNil(cardImageView?.image)
     }
 }
