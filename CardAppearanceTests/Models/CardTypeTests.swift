@@ -121,6 +121,12 @@ class CardTypeTests: XCTestCase {
                 XCTAssertEqual(sut.imageName, "KH", "\(String(describing: sut)) image name is incorrect")
             }
         }
-        
+    }
+    
+    func testCardType_whenCardImageInstantiated_imageIsNotNil() {
+        let allCardTypes = CardType.allCases
+        for sut in allCardTypes {
+            XCTAssertNotNil(UIImage(named: sut.imageName), "\(String(describing: sut)) image is nil")
+        }
     }
 }
