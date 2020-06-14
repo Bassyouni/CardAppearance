@@ -33,7 +33,7 @@ class MagicViewModelTests: XCTestCase {
         bag = nil
         super.tearDown()
     }
-
+    
     // MARK: - Quadrent Actions
     func testWhenTopLeadingQuadrantTapped_viewModelNotified() {
         // when
@@ -127,6 +127,7 @@ class MagicViewModelTests: XCTestCase {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .aceOfClubs
         
         sut
         .showCardObservable
@@ -141,9 +142,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(1)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 1 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .clubs)
                 }
             })
@@ -153,13 +154,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.aceOfClubs)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .aceOfHearts
         
         sut
         .showCardObservable
@@ -174,9 +176,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(1)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 1 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .hearts)
                 }
             })
@@ -186,13 +188,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.aceOfHearts)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
         // given// given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .aceOfDiamonds
         
         sut
         .showCardObservable
@@ -207,9 +210,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(1)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 1 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .diamonds)
                 }
             })
@@ -219,13 +222,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.aceOfDiamonds)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .aceOfSpades
         
         sut
         .showCardObservable
@@ -240,9 +244,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(1)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 1 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .spades)
                 }
             })
@@ -252,13 +256,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.aceOfSpades)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondTwo_twoOfClubsIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .twoOfClubs
         
         sut
         .showCardObservable
@@ -273,9 +278,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(2)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 2 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .clubs)
                 }
             })
@@ -285,13 +290,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.twoOfClubs)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondTwo_twoOfHeartsIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .twoOfHearts
         
         sut
         .showCardObservable
@@ -306,9 +312,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(2)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 2 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .hearts)
                 }
             })
@@ -318,13 +324,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.twoOfHearts)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondTwo_twoOfDiamondsIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .twoOfDiamonds
         
         sut
         .showCardObservable
@@ -339,9 +346,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(2)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 2 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .diamonds)
                 }
             })
@@ -351,13 +358,14 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.twoOfDiamonds)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondTwo_twoOfSpadesIsEmitted() throws {
        // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
+        let expectedCard: CardType = .twoOfSpades
         
         sut
         .showCardObservable
@@ -372,9 +380,9 @@ class MagicViewModelTests: XCTestCase {
          sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(2)
+            .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
-                if second == 2 {
+                if second == expectedCard.numericValue {
                     self.sut.cardSelected(withType: .spades)
                 }
             })
@@ -384,9 +392,143 @@ class MagicViewModelTests: XCTestCase {
         
         // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, CardType.twoOfSpades)
+        XCTAssertEqual(emittedCard, expectedCard)
     }
     
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondThirteen_kingOfClubsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        let expectedCard: CardType = .kingOfClubs
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(expectedCard.numericValue)
+            .subscribe(onNext: { (second) in
+                if second == expectedCard.numericValue {
+                    self.sut.cardSelected(withType: .clubs)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, expectedCard)
+    }
     
+    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondThirteen_kingOfHeartsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        let expectedCard: CardType = .kingOfHearts
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(expectedCard.numericValue)
+            .subscribe(onNext: { (second) in
+                if second == expectedCard.numericValue {
+                    self.sut.cardSelected(withType: .hearts)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, expectedCard)
+    }
+    
+    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondThirteen_kingOfDiamondsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        let expectedCard: CardType = .kingOfDiamonds
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(expectedCard.numericValue)
+            .subscribe(onNext: { (second) in
+                if second == expectedCard.numericValue {
+                    self.sut.cardSelected(withType: .diamonds)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, expectedCard)
+    }
+    
+    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondThirteen_kingOfSpadesIsEmitted() throws {
+       // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        let expectedCard: CardType = .kingOfSpades
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(expectedCard.numericValue)
+            .subscribe(onNext: { (second) in
+                if second == expectedCard.numericValue {
+                    self.sut.cardSelected(withType: .spades)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, expectedCard)
+    }
 }
 
