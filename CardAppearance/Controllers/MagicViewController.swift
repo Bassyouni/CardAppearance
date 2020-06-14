@@ -65,26 +65,43 @@ final class MagicViewController: UIViewController {
         view.addSubview(batteryView)
         fakeStatusBarContainerView.addSubview(timeLabel)
         fakeStatusBarContainerView.addSubview(batteryView)
-        cardImageView.contentMode = .scaleAspectFit
+        
         topLeadingButton.backgroundColor = .red
         topTrailingButton.backgroundColor = .blue
         bottomLeadingButton.backgroundColor = .yellow
         bottomTrailingButton.backgroundColor = .green
         view.backgroundColor = .black
-        timeLabel.textColor = .white
-        timeLabel.font = .systemFont(ofSize: 15)
+        setupTimeLabel()
+        setupBatteryView()
+        setupCardImageView()
+        addTapActionsForQuadrants()
+    }
+    
+    private func setupBatteryView() {
         batteryView.center = view.center
         batteryView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         batteryView.center = view.center
+    }
+    
+    private func setupTimeLabel() {
+        timeLabel.textColor = .white
+        timeLabel.font = .systemFont(ofSize: 15)
         timeLabel.text = "\(viewModel.currentTimeHours):\(viewModel.currentTimeMinutes):10"
-        topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
-        topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
-        bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
-        bottomTrailingButton.addTarget(self, action: #selector(didTapBottomTrailingQuadrant), for: .touchUpInside)
+    }
+    
+    private func setupCardImageView() {
+        cardImageView.contentMode = .scaleAspectFit
         let longGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressCardImageView))
         longGestureRecognizer.minimumPressDuration = 1
         cardImageView.addGestureRecognizer(longGestureRecognizer)
         cardImageView.isUserInteractionEnabled = true
+    }
+    
+    private func addTapActionsForQuadrants() {
+        topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
+        topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
+        bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
+        bottomTrailingButton.addTarget(self, action: #selector(didTapBottomTrailingQuadrant), for: .touchUpInside)
     }
     
     private func setupConstraints() {
