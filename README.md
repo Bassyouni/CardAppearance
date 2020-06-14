@@ -4,6 +4,10 @@
 
 This is a magic app that can be used by both magicians and amateurs
 
+## Performance
+
+* [This video](https://youtu.be/rz8szPV5Mio) will show you one presentation that might be used for this magic Appearance
+
 ## Built With
 
 * [RxSwift](https://github.com/ReactiveX/RxSwift) - ReactiveX for Swift
