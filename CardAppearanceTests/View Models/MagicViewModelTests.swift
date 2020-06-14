@@ -16,11 +16,9 @@ class MagicViewModelTests: XCTestCase {
     var sut: MagicViewModel!
     var secondsUseCaseMock: CreateSecondsUseCaseMock!
     var scheduler: TestScheduler!
-    var bag: DisposeBag!
 
     override func setUp()  {
         super.setUp()
-        bag = DisposeBag()
         scheduler = TestScheduler(initialClock: 0)
         secondsUseCaseMock = CreateSecondsUseCaseMock(scheduler: scheduler)
         sut = MagicViewModel(secondsUseCase: secondsUseCaseMock)
@@ -30,7 +28,6 @@ class MagicViewModelTests: XCTestCase {
         sut = nil
         secondsUseCaseMock = nil
         scheduler = nil
-        bag = nil
         super.tearDown()
     }
 
