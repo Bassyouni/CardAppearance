@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 import RxSwift
 
 final class MagicViewController: UIViewController {
@@ -75,7 +76,7 @@ final class MagicViewController: UIViewController {
         batteryView.center = view.center
         batteryView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         batteryView.center = view.center
-        timeLabel.text = "\(viewModel.currentTimeHours):\(viewModel.currentTimeMinutes)"
+        timeLabel.text = "\(viewModel.currentTimeHours):\(viewModel.currentTimeMinutes):10"
         topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
         topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
         bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
@@ -143,6 +144,17 @@ final class MagicViewController: UIViewController {
                 self.view.bringSubviewToFront(self.cardImageView)
                 self.fakeStatusBarContainerView.isHidden = true
             }).disposed(by: bag)
+        
+        
+        viewModel.secondsTimeObservable
+            .observeOn(MainScheduler.instance)
+            .map { [weak self] in
+                guard let self = self else { return "\($0)" }
+                let fakeTime = "\(self.viewModel.currentTimeHours):\(self.viewModel.currentTimeMinutes):\($0)"
+                return fakeTime
+            }
+            .bind(to: timeLabel.rx.text)
+            .disposed(by: bag)
     }
     
     // MARK: - Actions
