@@ -1,4 +1,4 @@
-framework module Pods_CardAppearanceTests {
+module Pods_CardAppearanceTests {
   umbrella header "Pods-CardAppearanceTests-umbrella.h"
 
   export *
