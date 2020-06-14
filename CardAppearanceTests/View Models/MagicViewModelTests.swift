@@ -35,36 +35,81 @@ class MagicViewModelTests: XCTestCase {
     }
     
     // MARK: - Quadrent Actions
-    func testWhenTopLeadingQuadrantTapped_viewModelNotified() {
+    func testTopLeadingQuadrantAction_whenCalled_publishedCardIsClubsSuit() {
+        // given
+        let exp = expectation(description: "Card is not Emitted")
+        var cardToBeShown: CardType?
+        sut.showCardObservable.subscribe(onNext: { (card) in
+            cardToBeShown = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
         // when
+        scheduler.start()
         sut.didTapTopLeadingQuadrant()
         
+        
         // then
-//        XCTAssertTrue(mockViewModel.isTopLeadingQuadrantTapped)
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(cardToBeShown?.suit, SuitType.clubs)
     }
     
-    func testWhenTopTrailingQuadrantTapped_viewModelNotified() {
+    func testTopTrailingQuadrantAction_whenCalled_publishedCardIsDiamondsSuit() {
+        // given
+        let exp = expectation(description: "Card is not Emitted")
+        var cardToBeShown: CardType?
+        sut.showCardObservable.subscribe(onNext: { (card) in
+            cardToBeShown = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
         // when
+        scheduler.start()
         sut.didTapTopTrailingQuadrant()
         
         // then
-//        XCTAssertTrue(mockViewModel.isTopTrailingQuadrantTapped)
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(cardToBeShown?.suit, SuitType.diamonds)
     }
     
-    func testWhenBottomLeadingQuadrantTapped_viewModelNotified() {
-        // when
-        sut.didTapBottomLeadingQuadrant()
+    func testBottomTrailingQuadrantAction_whenCalled_publishedCardIsSpadesSuit() {
+        // given
+        let exp = expectation(description: "Card is not Emitted")
+        var cardToBeShown: CardType?
+        sut.showCardObservable.subscribe(onNext: { (card) in
+            cardToBeShown = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
         
-        // then
-//        XCTAssertTrue(mockViewModel.isBottomLeadingQuadrantTapped)
-    }
-    
-    func testWhenBottomTrailingQuadrantTapped_viewModelNotified() {
         // when
+        scheduler.start()
         sut.didTapBottomTrailingQuadrant()
         
         // then
-//        XCTAssertTrue(mockViewModel.isBottomTrailingQuadrantTapped)
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(cardToBeShown?.suit, SuitType.spades)
+    }
+    
+    func testBottomLeadingQuadrantAction_whenCalled_publishedCardIsDiamondsSuit() {
+        // given
+        let exp = expectation(description: "Card is not Emitted")
+        var cardToBeShown: CardType?
+        sut.showCardObservable.subscribe(onNext: { (card) in
+            cardToBeShown = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        // when
+        scheduler.start()
+        sut.didTapBottomLeadingQuadrant()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(cardToBeShown?.suit, SuitType.hearts)
     }
     
     
@@ -125,7 +170,7 @@ class MagicViewModelTests: XCTestCase {
     // MARK: - Card selection Logic
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfClubsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .aceOfClubs
         
@@ -159,7 +204,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .aceOfHearts
         
@@ -193,7 +238,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
         // given// given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .aceOfDiamonds
         
@@ -227,7 +272,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .aceOfSpades
         
@@ -261,7 +306,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondTwo_twoOfClubsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .twoOfClubs
         
@@ -295,7 +340,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondTwo_twoOfHeartsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .twoOfHearts
         
@@ -329,7 +374,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondTwo_twoOfDiamondsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .twoOfDiamonds
         
@@ -363,7 +408,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondTwo_twoOfSpadesIsEmitted() throws {
        // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .twoOfSpades
         
@@ -397,7 +442,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondThirteen_kingOfClubsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .kingOfClubs
         
@@ -431,7 +476,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondThirteen_kingOfHeartsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .kingOfHearts
         
@@ -465,7 +510,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondThirteen_kingOfDiamondsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .kingOfDiamonds
         
@@ -499,7 +544,7 @@ class MagicViewModelTests: XCTestCase {
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondThirteen_kingOfSpadesIsEmitted() throws {
        // given
-        let exp = expectation(description: "Card Emitted")
+        let exp = expectation(description: "Card is not Emitted")
         var emittedCard: CardType?
         let expectedCard: CardType = .kingOfSpades
         
