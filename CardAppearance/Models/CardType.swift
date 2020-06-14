@@ -367,7 +367,115 @@ enum CardType: CaseIterable {
         default:
             return nil
         }
-        
+    }
+    
+    var suit: SuitType {
+        switch self {
+        case .aceOfSpades:
+             return .spades
+        case .aceOfDiamonds:
+             return .diamonds
+        case .aceOfClubs:
+             return .clubs
+        case .aceOfHearts:
+             return .hearts
+        case .twoOfSpades:
+             return .spades
+        case .twoOfDiamonds:
+             return .diamonds
+        case .twoOfClubs:
+             return .clubs
+        case .twoOfHearts:
+             return .hearts
+        case .threeOfSpades:
+             return .spades
+        case .threeOfDiamonds:
+             return .diamonds
+        case .threeOfClubs:
+             return .clubs
+        case .threeOfHearts:
+             return .hearts
+        case .fourOfSpades:
+             return .spades
+        case .fourOfDiamonds:
+             return .diamonds
+        case .fourOfClubs:
+             return .clubs
+        case .fourOfHearts:
+             return .hearts
+        case .fiveOfSpades:
+             return .spades
+        case .fiveOfDiamonds:
+             return .diamonds
+        case .fiveOfClubs:
+             return .clubs
+        case .fiveOfHearts:
+             return .hearts
+        case .sixOfSpades:
+             return .spades
+        case .sixOfDiamonds:
+             return .diamonds
+        case .sixOfClubs:
+             return .clubs
+        case .sixOfHearts:
+             return .hearts
+        case .sevenOfSpades:
+             return .spades
+        case .sevenOfDiamonds:
+             return .diamonds
+        case .sevenOfClubs:
+             return .clubs
+        case .sevenOfHearts:
+             return .hearts
+        case .eightOfSpades:
+             return .spades
+        case .eightOfDiamonds:
+             return .diamonds
+        case .eightOfClubs:
+             return .clubs
+        case .eightOfHearts:
+             return .hearts
+        case .nineOfSpades:
+             return .spades
+        case .nineOfDiamonds:
+             return .diamonds
+        case .nineOfClubs:
+             return .clubs
+        case .nineOfHearts:
+             return .hearts
+        case .tenOfSpades:
+             return .spades
+        case .tenOfDiamonds:
+             return .diamonds
+        case .tenOfClubs:
+             return .clubs
+        case .tenOfHearts:
+             return .hearts
+        case .jackOfSpades:
+             return .spades
+        case .jackOfDiamonds:
+             return .diamonds
+        case .jackOfClubs:
+             return .clubs
+        case .jackOfHearts:
+             return .hearts
+        case .queenOfSpades:
+             return .spades
+        case .queenOfDiamonds:
+             return .diamonds
+        case .queenOfClubs:
+             return .clubs
+        case .queenOfHearts:
+             return .hearts
+        case .kingOfSpades:
+             return .spades
+        case .kingOfDiamonds:
+             return .diamonds
+        case .kingOfClubs:
+             return .clubs
+        case .kingOfHearts:
+             return .hearts
+        }
     }
 }
 

@@ -10,6 +10,8 @@ import XCTest
 @testable import CardAppearance
 
 class CardTypeTests: XCTestCase {
+    
+    // MARK: - Card image tests
     func testCardType_imageNameIsCorrect() {
         let allCardTypes = CardType.allCases
         
@@ -130,6 +132,7 @@ class CardTypeTests: XCTestCase {
         }
     }
     
+    // MARK: - Card numeric value tests
     func testCardType_numericValueIsCorrect() {
         let allCardTypes = CardType.allCases
         
@@ -298,5 +301,120 @@ class CardTypeTests: XCTestCase {
                 XCTAssertEqual(cardType?.numericValue, value)
             }
         }
+    }
+    
+    
+    // MARK: - Suit for Card Test
+    func testSuitFor_whenSuitForCardIsCalled_correctSuitIsReturned() {
+        let allCardTypes = CardType.allCases
+               
+               for sut in allCardTypes {
+                   switch sut {
+                   case .aceOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .aceOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .aceOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .aceOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .twoOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .twoOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .twoOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .twoOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .threeOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .threeOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .threeOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .threeOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .fourOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .fourOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .fourOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .fourOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .fiveOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .fiveOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .fiveOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .fiveOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .sixOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .sixOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .sixOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .sixOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .sevenOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .sevenOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .sevenOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .sevenOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .eightOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .eightOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .eightOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .eightOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .nineOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .nineOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .nineOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .nineOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .tenOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .tenOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .tenOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .tenOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .jackOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .jackOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .jackOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .jackOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .queenOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .queenOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .queenOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .queenOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .kingOfSpades:
+                        XCTAssertEqual(sut.suit, .spades, "\(String(describing: sut)) suit is incorrect")
+                   case .kingOfDiamonds:
+                        XCTAssertEqual(sut.suit, .diamonds, "\(String(describing: sut)) suit is incorrect")
+                   case .kingOfClubs:
+                        XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
+                   case .kingOfHearts:
+                        XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   }
+               }
     }
 }
