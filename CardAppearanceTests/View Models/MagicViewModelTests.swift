@@ -144,7 +144,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, CardType.aceOfClubs)
     }
     
-    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
+    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
@@ -165,7 +165,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, CardType.aceOfHearts)
     }
     
-    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
+    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
@@ -186,7 +186,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, CardType.aceOfDiamonds)
     }
     
-    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
+    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
         // given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
