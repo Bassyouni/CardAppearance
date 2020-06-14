@@ -32,19 +32,19 @@ final class MagicViewModel: MagicViewModelInterface {
    
    // MARK: - Actions
     func didTapTopLeadingQuadrant() {
-        showCardSubject.onNext(.aceOfClubs)
+        cardSelected(withType: .clubs)
     }
 
     func didTapTopTrailingQuadrant() {
-        
+        cardSelected(withType: .diamonds)
     }
     
     func didTapBottomLeadingQuadrant() {
-        
+        cardSelected(withType: .hearts)
     }
     
     func didTapBottomTrailingQuadrant() {
-        
+        cardSelected(withType: .spades)
     }
     
     func cardSelected(withType type: SuitType) {
