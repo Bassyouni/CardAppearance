@@ -125,7 +125,7 @@ class MagicViewModelTests: XCTestCase {
     // MARK: - Card selection Logic
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfClubsIsEmitted() throws {
         // given
-        let exp = expectation(description: "Card Emited")
+        let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
         
         sut
@@ -142,6 +142,69 @@ class MagicViewModelTests: XCTestCase {
         // then
         wait(for: [exp], timeout: 1)
         XCTAssertEqual(emittedCard, CardType.aceOfClubs)
+    }
+    
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+            .showCardObservable
+            .subscribe(onNext: { (card) in
+                emittedCard = card
+                exp.fulfill()
+            })
+            .disposed(by: bag)
+        
+        // when
+        sut.cardSelected(withType: .hearts)
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.aceOfHearts)
+    }
+    
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+            .showCardObservable
+            .subscribe(onNext: { (card) in
+                emittedCard = card
+                exp.fulfill()
+            })
+            .disposed(by: bag)
+        
+        // when
+        sut.cardSelected(withType: .diamonds)
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.aceOfDiamonds)
+    }
+    
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+            .showCardObservable
+            .subscribe(onNext: { (card) in
+                emittedCard = card
+                exp.fulfill()
+            })
+            .disposed(by: bag)
+        
+        // when
+        sut.cardSelected(withType: .spades)
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.aceOfSpades)
     }
 }
 

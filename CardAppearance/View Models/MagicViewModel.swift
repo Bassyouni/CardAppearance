@@ -38,7 +38,16 @@ final class MagicViewModel: MagicViewModelInterface {
     }
     
     func cardSelected(withType type: SuitType) {
-        showCardSubject.onNext(.aceOfClubs)
+        switch type {
+        case .hearts:
+            showCardSubject.onNext(.aceOfHearts)
+        case .clubs:
+            showCardSubject.onNext(.aceOfClubs)
+        case .spades:
+            showCardSubject.onNext(.aceOfSpades)
+        case .diamonds:
+            showCardSubject.onNext(.aceOfDiamonds)
+        }
     }
 }
 
