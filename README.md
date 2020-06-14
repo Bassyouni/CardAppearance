@@ -1,6 +1,6 @@
 # Project Title
 
-[![Build Status](https://travis-ci.com/Bassyouni/CardAppearance.svg?branch=master)](https://travis-ci.com/Bassyouni/CardAppearance)
+[![Build Status](https://travis-ci.com/Bassyouni/CardAppearance.svg?branch=master)](https://travis-ci.com/Bassyouni/CardAppearance?branch=master)
 
 One Paragraph of project description goes here
 
