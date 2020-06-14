@@ -23,6 +23,7 @@
 		8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */; };
 		8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */; };
 		8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */; };
+		8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AF124961A4500B3C194 /* SuitType.swift */; };
 		8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */; };
 		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCaseTests.swift; sourceTree = "<group>"; };
 		8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCase.swift; sourceTree = "<group>"; };
 		8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsUseCaseMock.swift; sourceTree = "<group>"; };
+		8C9C0AF124961A4500B3C194 /* SuitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitType.swift; sourceTree = "<group>"; };
 		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 		BC461E899F3F7EF977DA9754 /* Pods_CardAppearance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardAppearance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8C07FBC52494E08000E97F94 /* CardType.swift */,
+				8C9C0AF124961A4500B3C194 /* SuitType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				8C07FBC62494E08000E97F94 /* CardType.swift in Sources */,
 				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,
 				8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */,
+				8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */,
 				8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */,
 				8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */,
 			);

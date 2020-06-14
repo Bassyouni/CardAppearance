@@ -16,9 +16,11 @@ class MagicViewModelTests: XCTestCase {
     var sut: MagicViewModel!
     var secondsUseCaseMock: CreateSecondsUseCaseMock!
     var scheduler: TestScheduler!
+    var bag: DisposeBag!
 
     override func setUp()  {
         super.setUp()
+        bag = DisposeBag()
         scheduler = TestScheduler(initialClock: 0)
         secondsUseCaseMock = CreateSecondsUseCaseMock(scheduler: scheduler)
         sut = MagicViewModel(secondsUseCase: secondsUseCaseMock)
@@ -28,6 +30,7 @@ class MagicViewModelTests: XCTestCase {
         sut = nil
         secondsUseCaseMock = nil
         scheduler = nil
+        bag = nil
         super.tearDown()
     }
 
@@ -117,6 +120,28 @@ class MagicViewModelTests: XCTestCase {
         ]
         
         XCTAssertEqual(observer.events, correctSequence)
+    }
+    
+    // MARK: - Card selection Logic
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfClubsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emited")
+        var emittedCard: CardType?
+        
+        sut
+            .showCardObservable
+            .subscribe(onNext: { (card) in
+                emittedCard = card
+                exp.fulfill()
+            })
+            .disposed(by: bag)
+        
+        // when
+        sut.cardSelected(withType: .clubs)
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.aceOfClubs)
     }
 }
 

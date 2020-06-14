@@ -36,6 +36,10 @@ final class MagicViewModel: MagicViewModelInterface {
     func didTapBottomTrailingQuadrant() {
         
     }
+    
+    func cardSelected(withType type: SuitType) {
+        showCardSubject.onNext(.aceOfClubs)
+    }
 }
 
 // MARK: - Public
