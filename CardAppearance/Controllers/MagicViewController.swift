@@ -91,10 +91,13 @@ final class MagicViewController: UIViewController {
     
     private func setupCardImageView() {
         cardImageView.contentMode = .scaleAspectFit
-        let longGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressCardImageView))
-        longGestureRecognizer.minimumPressDuration = 1
-        cardImageView.addGestureRecognizer(longGestureRecognizer)
         cardImageView.isUserInteractionEnabled = true
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
+        leftSwipeGesture.direction = .left
+        rightSwipeGesture.direction = .right
+        cardImageView.addGestureRecognizer(leftSwipeGesture)
+        cardImageView.addGestureRecognizer(rightSwipeGesture)
     }
     
     private func addTapActionsForQuadrants() {
@@ -193,7 +196,7 @@ final class MagicViewController: UIViewController {
         viewModel.didTapBottomTrailingQuadrant()
     }
     
-    @objc func didLongPressCardImageView() {
+    @objc func didSwipeCardImageView() {
         cardImageView.image = nil
         view.sendSubviewToBack(cardImageView)
         fakeStatusBarContainerView.isHidden = false
