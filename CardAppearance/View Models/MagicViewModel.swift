@@ -11,9 +11,14 @@ import Foundation
 
 final class MagicViewModel: MagicViewModelInterface {
     
+    // MARK: - Initializers
+    init(secondsUseCase: CreateSecondsTimerUseCaseInterface) {
+        self.secondsUseCase = secondsUseCase
+    }
+    
     // MARK: - Variables
     private let showCardSubject = PublishSubject<CardType>()
-    
+    private let secondsUseCase: CreateSecondsTimerUseCaseInterface
    
    // MARK: - Actions
     func didTapTopLeadingQuadrant() {
@@ -45,5 +50,11 @@ extension MagicViewModel {
     
     var showCardObservable: Observable<CardType> {
         showCardSubject.asObservable()
+    }
+    
+    var secondsTimeObservable: Observable<String> {
+        secondsUseCase.secondsObservable
+            .map { $0 + 10 }
+            .map { "\($0)" }
     }
 }

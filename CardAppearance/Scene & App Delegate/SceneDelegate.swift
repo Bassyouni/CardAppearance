@@ -6,6 +6,7 @@
 //  Copyright © 2020 Omar Bassyouni. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MagicViewController(viewModel: MagicViewModel())
+        let secondsUseCase = CreateSecondsTimerUseCase(scheduler: MainScheduler.instance)
+        let magicViewModel = MagicViewModel(secondsUseCase: secondsUseCase)
+        window?.rootViewController = MagicViewController(viewModel: magicViewModel)
         window?.makeKeyAndVisible()
     }
 }

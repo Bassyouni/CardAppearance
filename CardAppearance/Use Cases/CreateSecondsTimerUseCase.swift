@@ -27,7 +27,7 @@ final class CreateSecondsTimerUseCase: CreateSecondsTimerUseCaseInterface {
     
     var secondsObservable: Observable<Int> {
         _oneSecondTimer
-            .map { $0 % 12 }
+            .map { $0 % 13 }
             .map { $0 + 1 }
     }
     

@@ -39,7 +39,7 @@ class CreateSecondsTimerUseCaseTests: XCTestCase {
     func testSecondsObservable_whenReachesTwelve_resetsBackToOne() {
         let scheduler = TestScheduler(initialClock: 0)
         
-        let res = scheduler.start(created: 0, subscribed: 0, disposed: 14) {
+        let res = scheduler.start(created: 0, subscribed: 0, disposed: 15) {
             self.getSutWithScheduler(scheduler: scheduler).secondsObservable
         }
         
@@ -56,7 +56,8 @@ class CreateSecondsTimerUseCaseTests: XCTestCase {
             Recorded.next(10, 10),
             Recorded.next(11, 11),
             Recorded.next(12, 12),
-            Recorded.next(13, 1),
+            Recorded.next(13, 13),
+            Recorded.next(14, 1),
         ]
         
         XCTAssertEqual(res.events, correctSequence)

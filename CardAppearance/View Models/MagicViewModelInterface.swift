@@ -17,5 +17,6 @@ protocol MagicViewModelInterface {
     
     var currentTimeHours: Int { get }
     var currentTimeMinutes: Int { get }
+    var secondsTimeObservable: Observable<String> { get }
     var showCardObservable: Observable<CardType> { get }
 }

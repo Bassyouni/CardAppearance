@@ -11,6 +11,7 @@ import Foundation
 @testable import CardAppearance
 
 final class MagicViewModelMock: MagicViewModelInterface {
+    
    
     var currentTimeHours: Int {
         return 0
@@ -18,6 +19,10 @@ final class MagicViewModelMock: MagicViewModelInterface {
     
     var currentTimeMinutes: Int {
         return 0
+    }
+    
+    var secondsTimeObservable: Observable<String> {
+        Observable.of("1", "2", "3")
     }
 
     var isTopLeadingQuadrantTapped: Bool = false

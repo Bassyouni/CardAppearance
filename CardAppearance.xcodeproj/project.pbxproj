@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */; };
 		8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */; };
 		8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */; };
+		8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */; };
 		8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */; };
 		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
 		8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCaseTests.swift; sourceTree = "<group>"; };
 		8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCase.swift; sourceTree = "<group>"; };
+		8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsUseCaseMock.swift; sourceTree = "<group>"; };
 		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 		BC461E899F3F7EF977DA9754 /* Pods_CardAppearance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardAppearance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,8 +139,8 @@
 		8C07FBC12494DDB300E97F94 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
 				8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */,
+				8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -146,6 +148,7 @@
 		8C07FBC22494DDB900E97F94 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
 				8C1E0B1D246CCE2E005E5C95 /* MagicViewControllerTests.swift */,
 			);
 			path = Controllers;
@@ -232,7 +235,6 @@
 				45670D925B1232CB877C3177 /* Pods-CardAppearanceTests.debug.xcconfig */,
 				EA140E8AC8757143D48A2677 /* Pods-CardAppearanceTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -441,6 +443,7 @@
 				8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */,
 				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,
 				8C1E0B1E246CCE2E005E5C95 /* MagicViewControllerTests.swift in Sources */,
+				8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
