@@ -14,11 +14,21 @@ final class MagicViewModel: MagicViewModelInterface {
     // MARK: - Initializers
     init(secondsUseCase: CreateSecondsTimerUseCaseInterface) {
         self.secondsUseCase = secondsUseCase
+        setupBindings()
     }
     
     // MARK: - Variables
     private let showCardSubject = PublishSubject<CardType>()
     private let secondsUseCase: CreateSecondsTimerUseCaseInterface
+    private var currentSecond = 0
+    private let bag = DisposeBag()
+    
+    // MARK: - Initialization
+    private func setupBindings() {
+        secondsUseCase.secondsObservable.subscribe(onNext: { [weak self] (currentSecond) in
+            self?.currentSecond = currentSecond
+        }).disposed(by: bag)
+    }
    
    // MARK: - Actions
     func didTapTopLeadingQuadrant() {
@@ -38,15 +48,8 @@ final class MagicViewModel: MagicViewModelInterface {
     }
     
     func cardSelected(withType type: SuitType) {
-        switch type {
-        case .hearts:
-            showCardSubject.onNext(.aceOfHearts)
-        case .clubs:
-            showCardSubject.onNext(.aceOfClubs)
-        case .spades:
-            showCardSubject.onNext(.aceOfSpades)
-        case .diamonds:
-            showCardSubject.onNext(.aceOfDiamonds)
+        if let selectedCard = CardType.cardFor(value: currentSecond, suit: type) {
+            showCardSubject.onNext(selectedCard)
         }
     }
 }

@@ -129,15 +129,27 @@ class MagicViewModelTests: XCTestCase {
         var emittedCard: CardType?
         
         sut
-            .showCardObservable
-            .subscribe(onNext: { (card) in
-                emittedCard = card
-                exp.fulfill()
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(1)
+            .subscribe(onNext: { (second) in
+                if second == 1 {
+                    self.sut.cardSelected(withType: .clubs)
+                }
             })
             .disposed(by: bag)
         
-        // when
-        sut.cardSelected(withType: .clubs)
+        scheduler.start()
         
         // then
         wait(for: [exp], timeout: 1)
@@ -150,15 +162,27 @@ class MagicViewModelTests: XCTestCase {
         var emittedCard: CardType?
         
         sut
-            .showCardObservable
-            .subscribe(onNext: { (card) in
-                emittedCard = card
-                exp.fulfill()
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(1)
+            .subscribe(onNext: { (second) in
+                if second == 1 {
+                    self.sut.cardSelected(withType: .hearts)
+                }
             })
             .disposed(by: bag)
         
-        // when
-        sut.cardSelected(withType: .hearts)
+        scheduler.start()
         
         // then
         wait(for: [exp], timeout: 1)
@@ -166,20 +190,32 @@ class MagicViewModelTests: XCTestCase {
     }
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
-        // given
+        // given// given
         let exp = expectation(description: "Card Emitted")
         var emittedCard: CardType?
         
         sut
-            .showCardObservable
-            .subscribe(onNext: { (card) in
-                emittedCard = card
-                exp.fulfill()
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(1)
+            .subscribe(onNext: { (second) in
+                if second == 1 {
+                    self.sut.cardSelected(withType: .diamonds)
+                }
             })
             .disposed(by: bag)
         
-        // when
-        sut.cardSelected(withType: .diamonds)
+        scheduler.start()
         
         // then
         wait(for: [exp], timeout: 1)
@@ -192,19 +228,165 @@ class MagicViewModelTests: XCTestCase {
         var emittedCard: CardType?
         
         sut
-            .showCardObservable
-            .subscribe(onNext: { (card) in
-                emittedCard = card
-                exp.fulfill()
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(1)
+            .subscribe(onNext: { (second) in
+                if second == 1 {
+                    self.sut.cardSelected(withType: .spades)
+                }
             })
             .disposed(by: bag)
         
-        // when
-        sut.cardSelected(withType: .spades)
+        scheduler.start()
         
         // then
         wait(for: [exp], timeout: 1)
         XCTAssertEqual(emittedCard, CardType.aceOfSpades)
     }
+    
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondTwo_twoOfClubsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(2)
+            .subscribe(onNext: { (second) in
+                if second == 2 {
+                    self.sut.cardSelected(withType: .clubs)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.twoOfClubs)
+    }
+    
+    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondTwo_twoOfHeartsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(2)
+            .subscribe(onNext: { (second) in
+                if second == 2 {
+                    self.sut.cardSelected(withType: .hearts)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.twoOfHearts)
+    }
+    
+    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondTwo_twoOfDiamondsIsEmitted() throws {
+        // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(2)
+            .subscribe(onNext: { (second) in
+                if second == 2 {
+                    self.sut.cardSelected(withType: .diamonds)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.twoOfDiamonds)
+    }
+    
+    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondTwo_twoOfSpadesIsEmitted() throws {
+       // given
+        let exp = expectation(description: "Card Emitted")
+        var emittedCard: CardType?
+        
+        sut
+        .showCardObservable
+        .subscribe(onNext: { (card) in
+            emittedCard = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        
+        // when
+         sut.secondsTimeObservable
+            .compactMap { Int($0) }
+            .map { $0 - 10 }
+            .take(2)
+            .subscribe(onNext: { (second) in
+                if second == 2 {
+                    self.sut.cardSelected(withType: .spades)
+                }
+            })
+            .disposed(by: bag)
+        
+        scheduler.start()
+        
+        // then
+        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(emittedCard, CardType.twoOfSpades)
+    }
+    
+    
 }
 
