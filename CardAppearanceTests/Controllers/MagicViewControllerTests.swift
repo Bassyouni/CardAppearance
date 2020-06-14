@@ -91,7 +91,7 @@ class MagicViewControllerTests: XCTestCase {
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
         // When
-        sut.didTapCardImageView()
+        sut.didLongPressCardImageView()
         
         // Then
         let cardImageView = sut.view.subviews.first as? UIImageView
@@ -112,7 +112,7 @@ class MagicViewControllerTests: XCTestCase {
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
         // When
-        sut.didTapCardImageView()
+        sut.didLongPressCardImageView()
         
         // then
         XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)

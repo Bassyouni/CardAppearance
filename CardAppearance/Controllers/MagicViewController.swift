@@ -81,7 +81,9 @@ final class MagicViewController: UIViewController {
         topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
         bottomLeadingButton.addTarget(self, action: #selector(didTapBottomLeadingQuadrant), for: .touchUpInside)
         bottomTrailingButton.addTarget(self, action: #selector(didTapBottomTrailingQuadrant), for: .touchUpInside)
-        cardImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapCardImageView)))
+        let longGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressCardImageView))
+        longGestureRecognizer.minimumPressDuration = 1
+        cardImageView.addGestureRecognizer(longGestureRecognizer)
         cardImageView.isUserInteractionEnabled = true
     }
     
@@ -174,7 +176,7 @@ final class MagicViewController: UIViewController {
         viewModel.didTapBottomTrailingQuadrant()
     }
     
-    @objc func didTapCardImageView() {
+    @objc func didLongPressCardImageView() {
         cardImageView.image = nil
         view.sendSubviewToBack(cardImageView)
         fakeStatusBarContainerView.isHidden = false
