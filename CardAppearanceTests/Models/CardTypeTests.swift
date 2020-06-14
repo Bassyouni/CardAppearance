@@ -129,4 +129,117 @@ class CardTypeTests: XCTestCase {
             XCTAssertNotNil(UIImage(named: sut.imageName), "\(String(describing: sut)) image is nil")
         }
     }
+    
+    func testCardType_numericValueIsCorrect() {
+        let allCardTypes = CardType.allCases
+        
+        for sut in allCardTypes {
+            switch sut {
+            case .aceOfSpades:
+                XCTAssertEqual(sut.numericValue, 1, "\(String(describing: sut)) numeric value is incorrect")
+            case .aceOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 1, "\(String(describing: sut)) numeric value is incorrect")
+            case .aceOfClubs:
+                XCTAssertEqual(sut.numericValue, 1, "\(String(describing: sut)) numeric value is incorrect")
+            case .aceOfHearts:
+                XCTAssertEqual(sut.numericValue, 1, "\(String(describing: sut)) numeric value is incorrect")
+            case .twoOfSpades:
+                XCTAssertEqual(sut.numericValue, 2, "\(String(describing: sut)) numeric value is incorrect")
+            case .twoOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 2, "\(String(describing: sut)) numeric value is incorrect")
+            case .twoOfClubs:
+                XCTAssertEqual(sut.numericValue, 2, "\(String(describing: sut)) numeric value is incorrect")
+            case .twoOfHearts:
+                XCTAssertEqual(sut.numericValue, 2, "\(String(describing: sut)) numeric value is incorrect")
+            case .threeOfSpades:
+                XCTAssertEqual(sut.numericValue, 3, "\(String(describing: sut)) numeric value is incorrect")
+            case .threeOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 3, "\(String(describing: sut)) numeric value is incorrect")
+            case .threeOfClubs:
+                XCTAssertEqual(sut.numericValue, 3, "\(String(describing: sut)) numeric value is incorrect")
+            case .threeOfHearts:
+                XCTAssertEqual(sut.numericValue, 3, "\(String(describing: sut)) numeric value is incorrect")
+            case .fourOfSpades:
+                XCTAssertEqual(sut.numericValue, 4, "\(String(describing: sut)) numeric value is incorrect")
+            case .fourOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 4, "\(String(describing: sut)) numeric value is incorrect")
+            case .fourOfClubs:
+                XCTAssertEqual(sut.numericValue, 4, "\(String(describing: sut)) numeric value is incorrect")
+            case .fourOfHearts:
+                XCTAssertEqual(sut.numericValue, 4, "\(String(describing: sut)) numeric value is incorrect")
+            case .fiveOfSpades:
+                XCTAssertEqual(sut.numericValue, 5, "\(String(describing: sut)) numeric value is incorrect")
+            case .fiveOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 5, "\(String(describing: sut)) numeric value is incorrect")
+            case .fiveOfClubs:
+                XCTAssertEqual(sut.numericValue, 5, "\(String(describing: sut)) numeric value is incorrect")
+            case .fiveOfHearts:
+                XCTAssertEqual(sut.numericValue, 5, "\(String(describing: sut)) numeric value is incorrect")
+            case .sixOfSpades:
+                XCTAssertEqual(sut.numericValue, 6, "\(String(describing: sut)) numeric value is incorrect")
+            case .sixOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 6, "\(String(describing: sut)) numeric value is incorrect")
+            case .sixOfClubs:
+                XCTAssertEqual(sut.numericValue, 6, "\(String(describing: sut)) numeric value is incorrect")
+            case .sixOfHearts:
+                XCTAssertEqual(sut.numericValue, 6, "\(String(describing: sut)) numeric value is incorrect")
+            case .sevenOfSpades:
+                XCTAssertEqual(sut.numericValue, 7, "\(String(describing: sut)) numeric value is incorrect")
+            case .sevenOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 7, "\(String(describing: sut)) numeric value is incorrect")
+            case .sevenOfClubs:
+                XCTAssertEqual(sut.numericValue, 7, "\(String(describing: sut)) numeric value is incorrect")
+            case .sevenOfHearts:
+                XCTAssertEqual(sut.numericValue, 7, "\(String(describing: sut)) numeric value is incorrect")
+            case .eightOfSpades:
+                XCTAssertEqual(sut.numericValue, 8, "\(String(describing: sut)) numeric value is incorrect")
+            case .eightOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 8, "\(String(describing: sut)) numeric value is incorrect")
+            case .eightOfClubs:
+                XCTAssertEqual(sut.numericValue, 8, "\(String(describing: sut)) numeric value is incorrect")
+            case .eightOfHearts:
+                XCTAssertEqual(sut.numericValue, 8, "\(String(describing: sut)) numeric value is incorrect")
+            case .nineOfSpades:
+                XCTAssertEqual(sut.numericValue, 9, "\(String(describing: sut)) numeric value is incorrect")
+            case .nineOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 9, "\(String(describing: sut)) numeric value is incorrect")
+            case .nineOfClubs:
+                XCTAssertEqual(sut.numericValue, 9, "\(String(describing: sut)) numeric value is incorrect")
+            case .nineOfHearts:
+                XCTAssertEqual(sut.numericValue, 9, "\(String(describing: sut)) numeric value is incorrect")
+            case .tenOfSpades:
+                XCTAssertEqual(sut.numericValue, 10, "\(String(describing: sut)) numeric value is incorrect")
+            case .tenOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 10, "\(String(describing: sut)) numeric value is incorrect")
+            case .tenOfClubs:
+                XCTAssertEqual(sut.numericValue, 10, "\(String(describing: sut)) numeric value is incorrect")
+            case .tenOfHearts:
+                XCTAssertEqual(sut.numericValue, 10, "\(String(describing: sut)) numeric value is incorrect")
+            case .jackOfSpades:
+                XCTAssertEqual(sut.numericValue, 11, "\(String(describing: sut)) numeric value is incorrect")
+            case .jackOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 11, "\(String(describing: sut)) numeric value is incorrect")
+            case .jackOfClubs:
+                XCTAssertEqual(sut.numericValue, 11, "\(String(describing: sut)) numeric value is incorrect")
+            case .jackOfHearts:
+                XCTAssertEqual(sut.numericValue, 11, "\(String(describing: sut)) numeric value is incorrect")
+            case .queenOfSpades:
+                XCTAssertEqual(sut.numericValue, 12, "\(String(describing: sut)) numeric value is incorrect")
+            case .queenOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 12, "\(String(describing: sut)) numeric value is incorrect")
+            case .queenOfClubs:
+                XCTAssertEqual(sut.numericValue, 12, "\(String(describing: sut)) numeric value is incorrect")
+            case .queenOfHearts:
+                XCTAssertEqual(sut.numericValue, 12, "\(String(describing: sut)) numeric value is incorrect")
+            case .kingOfSpades:
+                XCTAssertEqual(sut.numericValue, 13, "\(String(describing: sut)) numeric value is incorrect")
+            case .kingOfDiamonds:
+                XCTAssertEqual(sut.numericValue, 13, "\(String(describing: sut)) numeric value is incorrect")
+            case .kingOfClubs:
+                XCTAssertEqual(sut.numericValue, 13, "\(String(describing: sut)) numeric value is incorrect")
+            case .kingOfHearts:
+                XCTAssertEqual(sut.numericValue, 13, "\(String(describing: sut)) numeric value is incorrect")
+            }
+        }
+    }
 }

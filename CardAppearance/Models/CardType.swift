@@ -118,6 +118,88 @@ enum CardType: CaseIterable {
         case .kingOfHearts: return "KH"
         }
     }
+    
+    var numericValue: Int  {
+        switch self {
+        case .aceOfSpades,
+             .aceOfDiamonds,
+             .aceOfClubs,
+             .aceOfHearts:
+            return 1
+            
+        case .twoOfSpades,
+             .twoOfDiamonds,
+             .twoOfClubs,
+             .twoOfHearts:
+            return 2
+            
+        case .threeOfSpades,
+             .threeOfDiamonds,
+             .threeOfClubs,
+             .threeOfHearts:
+            return 3
+            
+        case .fourOfSpades,
+             .fourOfDiamonds,
+             .fourOfClubs,
+             .fourOfHearts:
+            return 4
+            
+        case .fiveOfSpades,
+             .fiveOfDiamonds,
+             .fiveOfClubs,
+             .fiveOfHearts:
+            return 5
+            
+        case .sixOfSpades,
+             .sixOfDiamonds,
+             .sixOfClubs,
+             .sixOfHearts:
+            return 6
+        
+        case .sevenOfSpades,
+             .sevenOfDiamonds,
+             .sevenOfClubs,
+             .sevenOfHearts:
+            return 7
+            
+        case .eightOfSpades,
+             .eightOfDiamonds,
+             .eightOfClubs,
+             .eightOfHearts:
+            return 8
+            
+        case .nineOfSpades,
+             .nineOfDiamonds,
+             .nineOfClubs,
+             .nineOfHearts:
+            return 9
+            
+        case .tenOfSpades,
+             .tenOfDiamonds,
+             .tenOfClubs,
+             .tenOfHearts:
+            return 10
+            
+        case .jackOfSpades,
+             .jackOfDiamonds,
+             .jackOfClubs,
+             .jackOfHearts:
+            return 11
+            
+        case .queenOfSpades,
+             .queenOfDiamonds,
+             .queenOfClubs,
+             .queenOfHearts:
+            return 12
+            
+        case .kingOfSpades,
+             .kingOfDiamonds,
+             .kingOfClubs,
+             .kingOfHearts:
+            return 13
+        }
+    }
 }
 
 
