@@ -242,4 +242,61 @@ class CardTypeTests: XCTestCase {
             }
         }
     }
+    
+    // MARK: - Card for tests
+    func testCardFor_whenPassingZeroOfClubs_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 0, suit: .clubs))
+    }
+    
+    func testCardFor_whenPassingZeroOfHearts_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 0, suit: .hearts))
+    }
+    
+    func testCardFor_whenPassingZeroOfSpades_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 0, suit: .spades))
+    }
+    
+    func testCardFor_whenPassingZeroOfDiamonds_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 0, suit: .diamonds))
+    }
+    
+    func testCardFor_whenPassingFourteenOfClubs_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 14, suit: .clubs))
+    }
+    
+    func testCardFor_whenPassingFourteenOfHearts_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 14, suit: .hearts))
+    }
+    
+    func testCardFor_whenPassingFourteenOfSpades_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 14, suit: .spades))
+    }
+    
+    func testCardFor_whenPassingFourteenOfDiamonds_returnsNil() {
+        XCTAssertNil(CardType.cardFor(value: 14, suit: .diamonds))
+    }
+    
+    func testCardFor_whenPassingRightValueAndSuit_returnsCardTypeObject() {
+        for suit in SuitType.allCases {
+            for value in 1...13 {
+                // when
+                let cardType = CardType.cardFor(value: value, suit: suit)
+                
+                // then
+                XCTAssertNotNil(cardType)
+            }
+        }
+    }
+    
+    func testCardFor_whenPassingRightValueAndSuit_returnedObjectHasSameNumericValueAsTheOnePassed() {
+        for suit in SuitType.allCases {
+            for value in 1...13 {
+                // when
+                let cardType = CardType.cardFor(value: value, suit: suit)
+                
+                // then
+                XCTAssertEqual(cardType?.numericValue, value)
+            }
+        }
+    }
 }

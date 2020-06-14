@@ -200,6 +200,175 @@ enum CardType: CaseIterable {
             return 13
         }
     }
+    
+    static func cardFor(value: Int, suit: SuitType) -> CardType? {
+        guard value > 0 && value <= 13 else { return nil }
+        switch (value, suit) {
+        case (1, .hearts):
+            return .aceOfHearts
+            
+        case (2, .hearts):
+            return .twoOfHearts
+            
+        case (3, .hearts):
+            return .threeOfHearts
+        
+        case (4, .hearts):
+            return .fourOfHearts
+        
+        case (5, .hearts):
+            return .fiveOfHearts
+            
+        case (6, .hearts):
+            return .sixOfHearts
+            
+        case (7, .hearts):
+            return .sevenOfHearts
+        
+        case (8, .hearts):
+            return .eightOfHearts
+        
+        case (9, .hearts):
+            return .nineOfHearts
+        
+        case (10, .hearts):
+            return .tenOfHearts
+        
+        case (11, .hearts):
+            return .jackOfHearts
+            
+        case (12, .hearts):
+            return .queenOfHearts
+            
+        case (13, .hearts):
+            return .kingOfHearts
+            
+            
+        case (1, .spades):
+            return .aceOfSpades
+            
+        case (2, .spades):
+            return .twoOfSpades
+            
+        case (3, .spades):
+            return .threeOfSpades
+        
+        case (4, .spades):
+            return .fourOfSpades
+        
+        case (5, .spades):
+            return .fiveOfSpades
+            
+        case (6, .spades):
+            return .sixOfSpades
+            
+        case (7, .spades):
+            return .sevenOfSpades
+        
+        case (8, .spades):
+            return .eightOfSpades
+        
+        case (9, .spades):
+            return .nineOfSpades
+        
+        case (10, .spades):
+            return .tenOfSpades
+        
+        case (11, .spades):
+            return .jackOfSpades
+            
+        case (12, .spades):
+            return .queenOfSpades
+            
+        case (13, .spades):
+            return .kingOfSpades
+            
+            
+        case (1, .diamonds):
+            return .aceOfDiamonds
+            
+        case (2, .diamonds):
+            return .twoOfDiamonds
+            
+        case (3, .diamonds):
+            return .threeOfDiamonds
+        
+        case (4, .diamonds):
+            return .fourOfDiamonds
+        
+        case (5, .diamonds):
+            return .fiveOfDiamonds
+            
+        case (6, .diamonds):
+            return .sixOfDiamonds
+            
+        case (7, .diamonds):
+            return .sevenOfDiamonds
+        
+        case (8, .diamonds):
+            return .eightOfDiamonds
+        
+        case (9, .diamonds):
+            return .nineOfDiamonds
+        
+        case (10, .diamonds):
+            return .tenOfDiamonds
+        
+        case (11, .diamonds):
+            return .jackOfDiamonds
+            
+        case (12, .diamonds):
+            return .queenOfDiamonds
+            
+        case (13, .diamonds):
+            return .kingOfDiamonds
+            
+            
+        case (1, .clubs):
+            return .aceOfClubs
+            
+        case (2, .clubs):
+            return .twoOfClubs
+            
+        case (3, .clubs):
+            return .threeOfClubs
+        
+        case (4, .clubs):
+            return .fourOfClubs
+        
+        case (5, .clubs):
+            return .fiveOfClubs
+            
+        case (6, .clubs):
+            return .sixOfClubs
+            
+        case (7, .clubs):
+            return .sevenOfClubs
+        
+        case (8, .clubs):
+            return .eightOfClubs
+        
+        case (9, .clubs):
+            return .nineOfClubs
+        
+        case (10, .clubs):
+            return .tenOfClubs
+        
+        case (11, .clubs):
+            return .jackOfClubs
+            
+        case (12, .clubs):
+            return .queenOfClubs
+            
+        case (13, .clubs):
+            return .kingOfClubs
+            
+            
+        default:
+            return nil
+        }
+        
+    }
 }
 
 
