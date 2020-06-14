@@ -56,6 +56,7 @@ final class MagicViewController: UIViewController {
     
     // MARK: - Initialization
     private func setupViews() {
+        view.backgroundColor = .black
         view.addSubview(cardImageView)
         view.addSubview(topLeadingButton)
         view.addSubview(topTrailingButton)
@@ -65,12 +66,6 @@ final class MagicViewController: UIViewController {
         view.addSubview(batteryView)
         fakeStatusBarContainerView.addSubview(timeLabel)
         fakeStatusBarContainerView.addSubview(batteryView)
-        
-        topLeadingButton.backgroundColor = .red
-        topTrailingButton.backgroundColor = .blue
-        bottomLeadingButton.backgroundColor = .yellow
-        bottomTrailingButton.backgroundColor = .green
-        view.backgroundColor = .black
         setupTimeLabel()
         setupBatteryView()
         setupCardImageView()
