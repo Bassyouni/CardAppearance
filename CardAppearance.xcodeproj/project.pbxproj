@@ -21,6 +21,7 @@
 		8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */; };
 		8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */; };
 		8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */; };
+		8C37DB55249E7DFE00618085 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37DB54249E7DFE00618085 /* UIView+Extension.swift */; };
 		8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */; };
 		8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AF124961A4500B3C194 /* SuitType.swift */; };
 		8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */; };
@@ -65,6 +66,7 @@
 		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
 		8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCaseTests.swift; sourceTree = "<group>"; };
 		8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCase.swift; sourceTree = "<group>"; };
+		8C37DB54249E7DFE00618085 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsUseCaseStub.swift; sourceTree = "<group>"; };
 		8C9C0AF124961A4500B3C194 /* SuitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitType.swift; sourceTree = "<group>"; };
 		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				8C07FBBF2494DD6C00E97F94 /* View Models */,
 				8C07FBBC2494DD3700E97F94 /* Controllers */,
 				8C07FBBD2494DD5400E97F94 /* Views */,
+				8C37DB53249E7DE500618085 /* Extensions */,
 				8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */,
 				8C1E0B11246CCE2E005E5C95 /* LaunchScreen.storyboard */,
 				8C1E0B14246CCE2E005E5C95 /* Info.plist */,
@@ -238,6 +241,14 @@
 				27EA78DE5234A71979E75BA9 /* libPods-CardAppearanceTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C37DB53249E7DE500618085 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C37DB54249E7DFE00618085 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EF2C6E8994230F5AA53A5EA0 /* Pods */ = {
@@ -408,6 +419,7 @@
 				8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */,
 				8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */,
 				8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */,
+				8C37DB55249E7DFE00618085 /* UIView+Extension.swift in Sources */,
 				8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
