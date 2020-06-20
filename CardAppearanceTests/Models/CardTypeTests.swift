@@ -303,7 +303,6 @@ class CardTypeTests: XCTestCase {
         }
     }
     
-    
     // MARK: - Suit for Card Test
     func testSuitFor_whenSuitForCardIsCalled_correctSuitIsReturned() {
         let allCardTypes = CardType.allCases

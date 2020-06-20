@@ -11,110 +11,93 @@ import XCTest
 
 class MagicViewControllerTests: XCTestCase {
     
-    var sut: MagicViewController!
-    var mockViewModel: MagicViewModelMock!
-
-    override func setUp() {
-        super.setUp()
-        mockViewModel = MagicViewModelMock()
-        sut = MagicViewController(viewModel: mockViewModel)
-        
-        sut.loadViewIfNeeded()
-    }
-
-    override func tearDown() {
-        sut = nil
-        mockViewModel = nil
-        super.tearDown()
-    }
-
     // MARK: - Quadrent Actions
     func testWhenTopLeadingQuadrantTapped_viewModelNotified() {
-        // when
+        let (sut, mockViewModel) = makeSUT()
+        
         sut.didTapTopLeadingQuadrant()
         
-        // then
         XCTAssertTrue(mockViewModel.isTopLeadingQuadrantTapped)
     }
     
     func testWhenTopTrailingQuadrantTapped_viewModelNotified() {
-        // when
+        let (sut, mockViewModel) = makeSUT()
+        
         sut.didTapTopTrailingQuadrant()
         
-        // then
         XCTAssertTrue(mockViewModel.isTopTrailingQuadrantTapped)
     }
     
     func testWhenBottomLeadingQuadrantTapped_viewModelNotified() {
-        // when
+        let (sut, mockViewModel) = makeSUT()
+        
         sut.didTapBottomLeadingQuadrant()
         
-        // then
         XCTAssertTrue(mockViewModel.isBottomLeadingQuadrantTapped)
     }
     
     func testWhenBottomTrailingQuadrantTapped_viewModelNotified() {
-        // when
+        let (sut, mockViewModel) = makeSUT()
+        
         sut.didTapBottomTrailingQuadrant()
         
-        // then
         XCTAssertTrue(mockViewModel.isBottomTrailingQuadrantTapped)
     }
     
     // MARK: - Appearance
     func testStatusBarIsHidden() {
-        XCTAssertTrue(sut.prefersStatusBarHidden)
+        XCTAssertTrue(makeSUT().sut.prefersStatusBarHidden)
     }
     
     func testFakeStatusBarIsVisible() {
-        XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
+        XCTAssertFalse(makeSUT().sut.fakeStatusBarContainerView.isHidden)
     }
     
-    
-    // MARK: - Card Appearance Behaviour's
+    // MARK: - Card Appearance Behaviours
     func testCardImageView_whenShowingSelectedCard_cardImageIsOnTopVisible() {
-        // given
+        let (sut, mockViewModel) = makeSUT()
         let cardSelected = CardType.aceOfClubs
         let cardImage = UIImage(named: cardSelected.imageName)
         
-        // When
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        // Then
         let cardImageView = sut.view.subviews.last as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertEqual(cardImageView?.image?.pngData(), cardImage?.pngData())
     }
     
     func testCardImageView_whenImageTapped_cardImageIsHidden() {
-        // given
+        let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        // When
         sut.didSwipeCardImageView()
         
-        // Then
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertNil(cardImageView?.image)
     }
     
     func testFakeStatusBar_whenShowingSelectedCard_fakeStatusBarIsHidden() {        
-        // when
+        let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        // then
         XCTAssertTrue(sut.fakeStatusBarContainerView.isHidden)
     }
     
     func testFakeStatusBar_whenCardImageTapped_fakeStatusBarIsVisible() {
-        // given
+        let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        // When
         sut.didSwipeCardImageView()
         
-        // then
         XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
+    }
+    
+    // MARK: - Helpers
+    private func makeSUT() -> (sut: MagicViewController, mockViewModel: MagicViewModelMock) {
+        let mockViewModel = MagicViewModelMock()
+        let sut = MagicViewController(viewModel: mockViewModel)
+        sut.loadViewIfNeeded()
+        return (sut, mockViewModel)
     }
 }

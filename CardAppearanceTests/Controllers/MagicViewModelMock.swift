@@ -12,30 +12,17 @@ import Foundation
 
 final class MagicViewModelMock: MagicViewModelInterface {
     
-   
-    var currentTimeHours: Int {
-        return 0
-    }
-    
-    var currentTimeMinutes: Int {
-        return 0
-    }
-    
-    var secondsTimeObservable: Observable<String> {
-        Observable.of("1", "2", "3")
-    }
+    let showCardSubject = PublishSubject<CardType>()
+    var currentTimeHours: Int { return 0 }
+    var currentTimeMinutes: Int { return 0 }
+    var secondsTimeObservable: Observable<String> { Observable.of("1", "2", "3") }
+    var showCardObservable: Observable<CardType> { showCardSubject.asObservable() }
 
     var isTopLeadingQuadrantTapped: Bool = false
     var isTopTrailingQuadrantTapped: Bool = false
     var isBottomLeadingQuadrantTapped: Bool = false
     var isBottomTrailingQuadrantTapped: Bool = false
     
-    let showCardSubject = PublishSubject<CardType>()
-    
-    var showCardObservable: Observable<CardType> {
-        return showCardSubject.asObservable()
-    }
-
     func didTapTopLeadingQuadrant() {
         isTopLeadingQuadrantTapped = true
     }

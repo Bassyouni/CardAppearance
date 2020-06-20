@@ -46,7 +46,6 @@ class CreateSecondsTimerUseCaseTests: XCTestCase {
         XCTAssertEqual(res.events, correctSequence)
     }
     
-    
     // MARK: - Helpers
     private func makeSUT(_ scheduler: SchedulerType = MainScheduler.instance) -> CreateSecondsTimerUseCase {
         return CreateSecondsTimerUseCase(scheduler: scheduler)
