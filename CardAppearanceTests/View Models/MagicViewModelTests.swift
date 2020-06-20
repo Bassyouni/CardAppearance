@@ -12,137 +12,65 @@ import XCTest
 @testable import CardAppearance
 
 class MagicViewModelTests: XCTestCase {
-    
-    var sut: MagicViewModel!
-    var secondsUseCaseMock: CreateSecondsUseCaseStub!
-    var scheduler: TestScheduler!
-    var bag: DisposeBag!
 
-    override func setUp()  {
-        super.setUp()
-        bag = DisposeBag()
-        scheduler = TestScheduler(initialClock: 0)
-        secondsUseCaseMock = CreateSecondsUseCaseStub(scheduler: scheduler)
-        sut = MagicViewModel(secondsUseCase: secondsUseCaseMock)
-    }
-
-    override func tearDown() {
-        sut = nil
-        secondsUseCaseMock = nil
-        scheduler = nil
-        bag = nil
-        super.tearDown()
-    }
+    let bag = DisposeBag()
     
     // MARK: - Quadrent Actions
     func testTopLeadingQuadrantAction_whenCalled_publishedCardIsClubsSuit() {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var cardToBeShown: CardType?
-        sut.showCardObservable.subscribe(onNext: { (card) in
-            cardToBeShown = card
-            exp.fulfill()
+        let suit = getPublishedCardSuit(whenDoing: { sut in
+            sut.didTapTopLeadingQuadrant()
         })
-        .disposed(by: bag)
         
-        // when
-        scheduler.start()
-        sut.didTapTopLeadingQuadrant()
-        
-        
-        // then
-        wait(for: [exp], timeout: 1)
-        XCTAssertEqual(cardToBeShown?.suit, SuitType.clubs)
+        XCTAssertEqual(suit, SuitType.clubs)
     }
     
     func testTopTrailingQuadrantAction_whenCalled_publishedCardIsDiamondsSuit() {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var cardToBeShown: CardType?
-        sut.showCardObservable.subscribe(onNext: { (card) in
-            cardToBeShown = card
-            exp.fulfill()
+        let suit = getPublishedCardSuit(whenDoing: { sut in
+            sut.didTapTopTrailingQuadrant()
         })
-        .disposed(by: bag)
         
-        // when
-        scheduler.start()
-        sut.didTapTopTrailingQuadrant()
-        
-        // then
-        wait(for: [exp], timeout: 1)
-        XCTAssertEqual(cardToBeShown?.suit, SuitType.diamonds)
+        XCTAssertEqual(suit, SuitType.diamonds)
     }
     
     func testBottomTrailingQuadrantAction_whenCalled_publishedCardIsSpadesSuit() {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var cardToBeShown: CardType?
-        sut.showCardObservable.subscribe(onNext: { (card) in
-            cardToBeShown = card
-            exp.fulfill()
+        let suit = getPublishedCardSuit(whenDoing: { sut in
+            sut.didTapBottomTrailingQuadrant()
         })
-        .disposed(by: bag)
         
-        // when
-        scheduler.start()
-        sut.didTapBottomTrailingQuadrant()
-        
-        // then
-        wait(for: [exp], timeout: 1)
-        XCTAssertEqual(cardToBeShown?.suit, SuitType.spades)
+        XCTAssertEqual(suit, SuitType.spades)
     }
     
     func testBottomLeadingQuadrantAction_whenCalled_publishedCardIsDiamondsSuit() {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var cardToBeShown: CardType?
-        sut.showCardObservable.subscribe(onNext: { (card) in
-            cardToBeShown = card
-            exp.fulfill()
+        let suit = getPublishedCardSuit(whenDoing: { sut in
+            sut.didTapBottomLeadingQuadrant()
         })
-        .disposed(by: bag)
-        
-        // when
-        scheduler.start()
-        sut.didTapBottomLeadingQuadrant()
-        
-        // then
-        wait(for: [exp], timeout: 1)
-        XCTAssertEqual(cardToBeShown?.suit, SuitType.hearts)
-    }
     
+        XCTAssertEqual(suit, SuitType.hearts)
+    }
     
     // MARK: - Time Fetching
     func testFetchingCurrentTimeInHours_returnsCurrentTime() {
-        // when
+        let (sut, _) = makeSUT()
         let currentHours = sut.currentTimeHours
         
-        // given
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
+        let hour = currentDateGetValueFor(.hour)
         
-        // then
         XCTAssertEqual(currentHours, hour)
     }
     
     func testFetchingCurrentTimeInMinutes_returnsCurrentTime() {
-        // when
+        let (sut, _) = makeSUT()
         let currentMinutes = sut.currentTimeMinutes
         
-        // given
-        let date = Date()
-        let calendar = Calendar.current
-        let minutes = calendar.component(.minute, from: date)
+        let minutes = currentDateGetValueFor(.minute)
         
-        // then
         XCTAssertEqual(currentMinutes, minutes)
     }
     
     func testSeconds_whenNewElementsArrive_formatSecondsProperly() {
+        let (sut, scheduler) = makeSUT()
         let observer = scheduler.start(created: 0, subscribed: 0, disposed: 17) {
-            self.sut.secondsTimeObservable
+            sut.secondsTimeObservable
         }
         
         let correctSequence = [
@@ -169,384 +97,136 @@ class MagicViewModelTests: XCTestCase {
     
     // MARK: - Card selection Logic
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfClubsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .aceOfClubs
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .clubs)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .aceOfHearts
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .hearts)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
-        // given// given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .aceOfDiamonds
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .diamonds)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .aceOfSpades
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .spades)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondTwo_twoOfClubsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .twoOfClubs
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .clubs)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondTwo_twoOfHeartsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .twoOfHearts
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .hearts)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondTwo_twoOfDiamondsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .twoOfDiamonds
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .diamonds)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondTwo_twoOfSpadesIsEmitted() throws {
-       // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .twoOfSpades
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .spades)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenClubsIsSelectedAtSecondThirteen_kingOfClubsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .kingOfClubs
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .clubs)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondThirteen_kingOfHeartsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .kingOfHearts
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .hearts)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondThirteen_kingOfDiamondsIsEmitted() throws {
-        // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
-        let expectedCard: CardType = .kingOfDiamonds
+        let expectedCard: CardType = .kingOfSpades
         
-        sut
-        .showCardObservable
-        .subscribe(onNext: { (card) in
-            emittedCard = card
-            exp.fulfill()
-        })
-        .disposed(by: bag)
-        
-        
-        // when
-         sut.secondsTimeObservable
-            .compactMap { Int($0) }
-            .map { $0 - 10 }
-            .take(expectedCard.numericValue)
-            .subscribe(onNext: { (second) in
-                if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .diamonds)
-                }
-            })
-            .disposed(by: bag)
-        
-        scheduler.start()
-        
-        // then
-        wait(for: [exp], timeout: 1)
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
     func testCardSelectionLogic_whenSpadessIsSelectedAtSecondThirteen_kingOfSpadesIsEmitted() throws {
-       // given
-        let exp = expectation(description: "Card is not Emitted")
-        var emittedCard: CardType?
         let expectedCard: CardType = .kingOfSpades
+    
+        let emittedCard = getEmittedCardBasedOn(expectedCard)
+
+        XCTAssertEqual(emittedCard, expectedCard)
+    }
+    
+    // MARK: - Helpers
+    private func makeSUT() -> (MagicViewModel, TestScheduler) {
+        let scheduler = TestScheduler(initialClock: 0)
+        let secondsUseCaseMock = CreateSecondsUseCaseStub(scheduler: scheduler)
+        return (MagicViewModel(secondsUseCase: secondsUseCaseMock), scheduler)
+    }
+    
+    private func getPublishedCardSuit(whenDoing action: (MagicViewModel) -> Void) -> SuitType? {
+        let (sut, scheduler) = makeSUT()
+        let exp = expectation(description: "Card is not Emitted")
+        var cardToBeShown: CardType?
+        
+        sut.showCardObservable.subscribe(onNext: { (card) in
+            cardToBeShown = card
+            exp.fulfill()
+        })
+        .disposed(by: bag)
+        
+        scheduler.start()
+        action(sut)
+        
+        wait(for: [exp], timeout: 1)
+        return cardToBeShown?.suit
+    }
+    
+    private func currentDateGetValueFor(_ component: Calendar.Component) -> Int {
+        let date = Date()
+        let calendar = Calendar.current
+        return calendar.component(component, from: date)
+    }
+    
+    private func getEmittedCardBasedOn(_ expectedCard: CardType) -> CardType? {
+        let (sut, scheduler) = makeSUT()
+        var emittedCard: CardType?
+        let exp = expectation(description: "Card is not Emitted")
         
         sut
         .showCardObservable
@@ -556,24 +236,20 @@ class MagicViewModelTests: XCTestCase {
         })
         .disposed(by: bag)
         
-        
-        // when
-         sut.secondsTimeObservable
+        sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
             .take(expectedCard.numericValue)
             .subscribe(onNext: { (second) in
                 if second == expectedCard.numericValue {
-                    self.sut.cardSelected(withType: .spades)
+                    sut.cardSelected(withType: expectedCard.suit)
                 }
             })
             .disposed(by: bag)
         
         scheduler.start()
         
-        // then
         wait(for: [exp], timeout: 1)
-        XCTAssertEqual(emittedCard, expectedCard)
+        return emittedCard
     }
 }
-
