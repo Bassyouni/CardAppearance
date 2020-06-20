@@ -1,5 +1,5 @@
 //
-//  CreateSecondsUseCaseMock.swift
+//  CreateSecondsUseCaseStub.swift
 //  CardAppearanceTests
 //
 //  Created by Omar Bassyouni on 6/14/20.
@@ -11,7 +11,7 @@ import RxTest
 import Foundation
 @testable import CardAppearance
 
-class CreateSecondsUseCaseMock: CreateSecondsTimerUseCaseInterface {
+final class CreateSecondsUseCaseStub: CreateSecondsTimerUseCaseInterface {
     
     let scheduler: SchedulerType
     init(scheduler: SchedulerType) {

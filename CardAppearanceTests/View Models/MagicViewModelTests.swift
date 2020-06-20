@@ -14,7 +14,7 @@ import XCTest
 class MagicViewModelTests: XCTestCase {
     
     var sut: MagicViewModel!
-    var secondsUseCaseMock: CreateSecondsUseCaseMock!
+    var secondsUseCaseMock: CreateSecondsUseCaseStub!
     var scheduler: TestScheduler!
     var bag: DisposeBag!
 
@@ -22,7 +22,7 @@ class MagicViewModelTests: XCTestCase {
         super.setUp()
         bag = DisposeBag()
         scheduler = TestScheduler(initialClock: 0)
-        secondsUseCaseMock = CreateSecondsUseCaseMock(scheduler: scheduler)
+        secondsUseCaseMock = CreateSecondsUseCaseStub(scheduler: scheduler)
         sut = MagicViewModel(secondsUseCase: secondsUseCaseMock)
     }
 

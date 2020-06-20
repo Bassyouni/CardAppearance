@@ -15,32 +15,15 @@ import RxCocoa
 
 class CreateSecondsTimerUseCaseTests: XCTestCase {
     
-    var sut: CreateSecondsTimerUseCase!
-    var bag: DisposeBag!
-    
-    override func setUp() {
-        bag = DisposeBag()
-        sut = getSutWithScheduler(scheduler: MainScheduler.instance)
-    }
-    
-    override func tearDown() {
-        sut = nil
-        bag = nil
-    }
-    
-    private func getSutWithScheduler(scheduler: SchedulerType) -> CreateSecondsTimerUseCase {
-        return CreateSecondsTimerUseCase(scheduler: scheduler)
-    }
-    
     func testSecondsObservable_initialState_equalsOne() throws {
-        XCTAssertEqual(try sut.secondsObservable.take(1).toBlocking().first(), 1)
+        XCTAssertEqual(try makeSUT().secondsObservable.take(1).toBlocking().first(), 1)
     }
     
     func testSecondsObservable_whenReachesTwelve_resetsBackToOne() {
         let scheduler = TestScheduler(initialClock: 0)
         
         let res = scheduler.start(created: 0, subscribed: 0, disposed: 15) {
-            self.getSutWithScheduler(scheduler: scheduler).secondsObservable
+            self.makeSUT(scheduler).secondsObservable
         }
         
         let correctSequence = [
@@ -62,5 +45,10 @@ class CreateSecondsTimerUseCaseTests: XCTestCase {
         
         XCTAssertEqual(res.events, correctSequence)
     }
-
+    
+    
+    // MARK: - Helpers
+    private func makeSUT(_ scheduler: SchedulerType = MainScheduler.instance) -> CreateSecondsTimerUseCase {
+        return CreateSecondsTimerUseCase(scheduler: scheduler)
+    }
 }

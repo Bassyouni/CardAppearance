@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,7 @@
 		8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */; };
 		8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */; };
 		8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */; };
-		8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */; };
+		8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */; };
 		8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AF124961A4500B3C194 /* SuitType.swift */; };
 		8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */; };
 		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
@@ -65,7 +65,7 @@
 		8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelMock.swift; sourceTree = "<group>"; };
 		8C29E98E24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCaseTests.swift; sourceTree = "<group>"; };
 		8C29E99124954D2500FCD778 /* CreateSecondsTimerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsTimerUseCase.swift; sourceTree = "<group>"; };
-		8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsUseCaseMock.swift; sourceTree = "<group>"; };
+		8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsUseCaseStub.swift; sourceTree = "<group>"; };
 		8C9C0AF124961A4500B3C194 /* SuitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitType.swift; sourceTree = "<group>"; };
 		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */,
-				8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseMock.swift */,
+				8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 				8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */,
 				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,
 				8C1E0B1E246CCE2E005E5C95 /* MagicViewControllerTests.swift in Sources */,
-				8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseMock.swift in Sources */,
+				8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
