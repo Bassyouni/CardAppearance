@@ -21,6 +21,7 @@ class MagicViewModelTests: XCTestCase {
             sut.didTapTopLeadingQuadrant()
         })
         
+        XCTFail("Intentional Crash")
         XCTAssertEqual(suit, SuitType.clubs)
     }
     
