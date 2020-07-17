@@ -27,32 +27,62 @@ final class MagicScreenTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupConstraints()
     }
     
     // MARK: - Initialization
     private func setupViews() {
         view.addSubview(buttonsStackView)
-        buttonsStackView.addSubviews(emptyScreenButton, screenWithCardButton)
+        buttonsStackView.addArrangedSubview(emptyScreenButton)
+        buttonsStackView.addArrangedSubview(screenWithCardButton)
         
+        configureStackView()
         configureEmptyScreenButton()
         configureScreenWithCardButton()
     }
+    
+    private func configureStackView() {
+        buttonsStackView.axis = .vertical
+        buttonsStackView.alignment = .center
+        buttonsStackView.distribution = .fill
+        buttonsStackView.spacing = 20
+    }
      
     private func configureEmptyScreenButton() {
+        applyButtonAppearance(for: emptyScreenButton)
         emptyScreenButton.setTitle("Empty Screen", for: .normal)
         emptyScreenButton.addTarget(self, action: #selector(handleEmptyScreenButtonAction), for: .touchUpInside)
     }
     
     private func configureScreenWithCardButton() {
+        applyButtonAppearance(for: screenWithCardButton)
         screenWithCardButton.setTitle("Screen With Card", for: .normal)
         screenWithCardButton.addTarget(self, action: #selector(handleWithCardButtonAction), for: .touchUpInside)
     }
     
+    private func applyButtonAppearance(for button: UIButton) {
+        button.layer.cornerRadius = 8
+        button.titleLabel?.font = .monospacedSystemFont(ofSize: 16, weight: .medium)
+        button.backgroundColor = .init(red: 31/255, green: 31/255, blue: 36/255, alpha: 1)
+        button.setTitleColor(.init(red: 252/255, green: 116/255, blue: 103/255, alpha: 1), for: .normal)
+    }
+    
+    private func setupConstraints() {
+        emptyScreenButton.translatesAutoresizingMaskIntoConstraints = false
+        screenWithCardButton.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        emptyScreenButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        emptyScreenButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        screenWithCardButton.widthAnchor.constraint(equalTo: emptyScreenButton.widthAnchor).isActive = true
+        screenWithCardButton.heightAnchor.constraint(equalTo: emptyScreenButton.heightAnchor).isActive = true
+        
+        buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        buttonsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     // MARK: - Actions
-    
-    
-    
-    
     @objc private func handleEmptyScreenButtonAction() {
         delegate?.didChooseEmptyScreen()
     }
