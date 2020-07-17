@@ -96,7 +96,7 @@ class MagicViewModelTests: XCTestCase {
     }
     
     // MARK: - Card selection Logic
-    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfClubsIsEmitted() throws {
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondOne_AceOfClubsIsEmitted() {
         let expectedCard: CardType = .aceOfClubs
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -104,7 +104,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() throws {
+    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondOne_AceOfHeartsIsEmitted() {
         let expectedCard: CardType = .aceOfHearts
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -112,7 +112,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() throws {
+    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondOne_AceOfDiamondsIsEmitted() {
         let expectedCard: CardType = .aceOfDiamonds
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -120,7 +120,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondOne_AceOfSpadesIsEmitted() throws {
+    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondOne_AceOfSpadesIsEmitted() {
         let expectedCard: CardType = .aceOfSpades
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -128,7 +128,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenClubsIsSelectedAtSecondTwo_twoOfClubsIsEmitted() throws {
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondTwo_twoOfClubsIsEmitted() {
         let expectedCard: CardType = .twoOfClubs
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -136,7 +136,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondTwo_twoOfHeartsIsEmitted() throws {
+    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondTwo_twoOfHeartsIsEmitted() {
         let expectedCard: CardType = .twoOfHearts
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -144,7 +144,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondTwo_twoOfDiamondsIsEmitted() throws {
+    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondTwo_twoOfDiamondsIsEmitted() {
         let expectedCard: CardType = .twoOfDiamonds
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -152,7 +152,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondTwo_twoOfSpadesIsEmitted() throws {
+    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondTwo_twoOfSpadesIsEmitted() {
         let expectedCard: CardType = .twoOfSpades
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -160,7 +160,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenClubsIsSelectedAtSecondThirteen_kingOfClubsIsEmitted() throws {
+    func testCardSelectionLogic_whenClubsIsSelectedAtSecondThirteen_kingOfClubsIsEmitted() {
         let expectedCard: CardType = .kingOfClubs
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -168,7 +168,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondThirteen_kingOfHeartsIsEmitted() throws {
+    func testCardSelectionLogic_whenhHeartsIsSelectedAtSecondThirteen_kingOfHeartsIsEmitted() {
         let expectedCard: CardType = .kingOfHearts
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -176,7 +176,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondThirteen_kingOfDiamondsIsEmitted() throws {
+    func testCardSelectionLogic_whenDiamondsIsSelectedAtSecondThirteen_kingOfDiamondsIsEmitted() {
         let expectedCard: CardType = .kingOfSpades
         
         let emittedCard = getEmittedCardBasedOn(expectedCard)
@@ -184,7 +184,7 @@ class MagicViewModelTests: XCTestCase {
         XCTAssertEqual(emittedCard, expectedCard)
     }
     
-    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondThirteen_kingOfSpadesIsEmitted() throws {
+    func testCardSelectionLogic_whenSpadessIsSelectedAtSecondThirteen_kingOfSpadesIsEmitted() {
         let expectedCard: CardType = .kingOfSpades
     
         let emittedCard = getEmittedCardBasedOn(expectedCard)
