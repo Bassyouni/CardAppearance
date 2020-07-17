@@ -15,13 +15,47 @@ protocol MagicScreenTypeViewControllerDelegate: class {
 
 final class MagicScreenTypeViewController: UIViewController {
     
+    // MARK: - UI Variables
+    let buttonsStackView = UIStackView()
+    let emptyScreenButton = UIButton()
+    let screenWithCardButton = UIButton()
+    
+    // MARK: - Variables
     weak var delegate: MagicScreenTypeViewControllerDelegate?
     
-    func handleEmptyScreenButtonAction() {
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+    }
+    
+    // MARK: - Initialization
+    private func setupViews() {
+        view.addSubview(buttonsStackView)
+        buttonsStackView.addSubviews(emptyScreenButton, screenWithCardButton)
+        
+        configureEmptyScreenButton()
+        configureScreenWithCardButton()
+    }
+     
+    private func configureEmptyScreenButton() {
+        emptyScreenButton.addTarget(self, action: #selector(handleEmptyScreenButtonAction), for: .touchUpInside)
+    }
+    
+    private func configureScreenWithCardButton() {
+        screenWithCardButton.addTarget(self, action: #selector(handleWithCardButtonAction), for: .touchUpInside)
+    }
+    
+    // MARK: - Actions
+    
+    
+    
+    
+    @objc private func handleEmptyScreenButtonAction() {
         delegate?.didChooseEmptyScreen()
     }
     
-    func handleWithCardButtonAction() {
+    @objc private func handleWithCardButtonAction() {
         delegate?.didChooseScreenWithCard()
     }
 }
