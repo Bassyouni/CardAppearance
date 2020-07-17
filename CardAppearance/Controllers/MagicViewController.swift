@@ -107,53 +107,30 @@ final class MagicViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        var constraints = [NSLayoutConstraint]()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        cardImageView.translatesAutoresizingMaskIntoConstraints = false
-        topLeadingButton.translatesAutoresizingMaskIntoConstraints = false
-        topTrailingButton.translatesAutoresizingMaskIntoConstraints = false
-        bottomLeadingButton.translatesAutoresizingMaskIntoConstraints = false
-        bottomTrailingButton.translatesAutoresizingMaskIntoConstraints = false
-        fakeStatusBarContainerView.translatesAutoresizingMaskIntoConstraints = false
-        batteryView.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        cardImageView.fillSuperview()
         
-        constraints.append(cardImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        constraints.append(cardImageView.topAnchor.constraint(equalTo: view.topAnchor))
-        constraints.append(cardImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-        constraints.append(cardImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
+        topLeadingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
+        topTrailingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
+        bottomLeadingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
+        bottomTrailingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
         
-        constraints.append(contentsOf: addWidthAndHeightConstraints(for: topLeadingButton))
-        constraints.append(contentsOf: addWidthAndHeightConstraints(for: topTrailingButton))
-        constraints.append(contentsOf: addWidthAndHeightConstraints(for: bottomLeadingButton))
-        constraints.append(contentsOf: addWidthAndHeightConstraints(for: bottomTrailingButton))
+        topLeadingButton.anchor(top: view.topAnchor, leading: view.leadingAnchor)
+        topTrailingButton.anchor(top: view.topAnchor, trailing: view.trailingAnchor)
+        bottomLeadingButton.anchor(leading: view.leadingAnchor, bottom: view.bottomAnchor)
+        bottomTrailingButton.anchor(bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+    
+        fakeStatusBarContainerView.anchor(top: view.topAnchor,
+                                          leading: view.leadingAnchor,
+                                          trailing: view.trailingAnchor,
+                                          size: CGSize(width: 0, height: UIApplication.shared.statusBarFrame.height))
         
-        constraints.append(topLeadingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        constraints.append(topLeadingButton.topAnchor.constraint(equalTo: view.topAnchor))
+        timeLabel.anchor(leading: view.leadingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 0))
+        timeLabel.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor).isActive = true
         
-        constraints.append(topTrailingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-        constraints.append(topTrailingButton.topAnchor.constraint(equalTo: view.topAnchor))
-        
-        constraints.append(bottomLeadingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        constraints.append(bottomLeadingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor))
-        
-        constraints.append(bottomTrailingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-        constraints.append(bottomTrailingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor))
-        
-        constraints.append(fakeStatusBarContainerView.topAnchor.constraint(equalTo: view.topAnchor))
-        constraints.append(fakeStatusBarContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        constraints.append(fakeStatusBarContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-        constraints.append(fakeStatusBarContainerView.heightAnchor.constraint(equalToConstant: UIApplication.shared.statusBarFrame.height ))
-        
-        constraints.append(timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20))
-        constraints.append(timeLabel.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor))
-        
-        constraints.append(batteryView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15))
-        constraints.append(batteryView.widthAnchor.constraint(equalToConstant: 25))
-        constraints.append(batteryView.heightAnchor.constraint(equalToConstant: 20))
-        constraints.append(batteryView.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor))
-        
-        NSLayoutConstraint.activate(constraints)
+        batteryView.anchor(trailing: view.trailingAnchor,
+                           padding: .init(top: 0, left: 0, bottom: 0, right: 15),
+                           size: CGSize(width: 25, height: 20))
+        batteryView.centerYAnchor.constraint(equalTo: fakeStatusBarContainerView.centerYAnchor).isActive = true
     }
     
     private func setupBindings() {
@@ -201,28 +178,3 @@ final class MagicViewController: UIViewController {
         fakeStatusBarContainerView.isHidden = false
     }
 }
- 
-// MARK: - Helpers
-extension MagicViewController {
-    private func addWidthAndHeightConstraints(for someView: UIView) -> [NSLayoutConstraint] {
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: someView,
-                                              attribute: .width,
-                                              relatedBy: .equal,
-                                              toItem: view,
-                                              attribute: .width,
-                                              multiplier: 0.5,
-                                              constant: 0))
-        
-        constraints.append(NSLayoutConstraint(item: someView,
-                                              attribute: .height,
-                                              relatedBy: .equal,
-                                              toItem: view,
-                                              attribute: .height,
-                                              multiplier: 0.5,
-                                              constant: 0))
-        
-        return constraints
-    }
-}
-
