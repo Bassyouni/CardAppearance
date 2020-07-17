@@ -35,6 +35,10 @@ class MagicScreenTypeViewControllerTests: XCTestCase {
         XCTAssertEqual(makeSUT().sut.screenWithCardButton.titleLabel?.text, "Screen With Card")
     }
     
+    func test_titleHasCorrectText() {
+        XCTAssertEqual(makeSUT().sut.titleLabel.text, "Choose a Screen Type")
+    }
+    
     // MARK: - Helpers
     func makeSUT() -> (sut: MagicScreenTypeViewController, spy: MagicScreenSpy) {
         let sut = MagicScreenTypeViewController()

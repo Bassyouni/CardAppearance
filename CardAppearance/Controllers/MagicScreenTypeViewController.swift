@@ -17,6 +17,7 @@ final class MagicScreenTypeViewController: UIViewController {
     
     // MARK: - UI Variables
     let buttonsStackView = UIStackView()
+    let titleLabel = UILabel()
     let emptyScreenButton = UIButton()
     let screenWithCardButton = UIButton()
     
@@ -33,10 +34,12 @@ final class MagicScreenTypeViewController: UIViewController {
     // MARK: - Initialization
     private func setupViews() {
         view.addSubview(buttonsStackView)
+        buttonsStackView.addArrangedSubview(titleLabel)
         buttonsStackView.addArrangedSubview(emptyScreenButton)
         buttonsStackView.addArrangedSubview(screenWithCardButton)
         
         configureStackView()
+        configureTitleLabel()
         configureEmptyScreenButton()
         configureScreenWithCardButton()
     }
@@ -46,6 +49,12 @@ final class MagicScreenTypeViewController: UIViewController {
         buttonsStackView.alignment = .center
         buttonsStackView.distribution = .fill
         buttonsStackView.spacing = 20
+    }
+    
+    private func configureTitleLabel() {
+        titleLabel.text = "Choose a Screen Type"
+        titleLabel.font = .monospacedSystemFont(ofSize: 16, weight: .medium)
+        titleLabel.textColor = .init(red: 252/255, green: 107/255, blue: 170/255, alpha: 1)
     }
      
     private func configureEmptyScreenButton() {
@@ -79,7 +88,7 @@ final class MagicScreenTypeViewController: UIViewController {
         screenWithCardButton.heightAnchor.constraint(equalTo: emptyScreenButton.heightAnchor).isActive = true
         
         buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        buttonsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        buttonsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
     }
     
     // MARK: - Actions
