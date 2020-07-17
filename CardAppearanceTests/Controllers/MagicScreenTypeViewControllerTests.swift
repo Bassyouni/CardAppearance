@@ -16,17 +16,32 @@ class MagicScreenTypeViewControllerTests: XCTestCase {
         let spy = MagicScreenSpy()
         sut.delegate = spy
         
-        sut.handleEmptyScreenAction()
+        sut.handleEmptyScreenButtonAction()
         
-        XCTAssertTrue(spy.emptyScreenDelegateNotified)
+        XCTAssertTrue(spy.didChooseEmptyScreenDelegateNotified)
+    }
+    
+    func test_withCardButtonPressed_firesDelegateMethod() {
+        let sut = MagicScreenTypeViewController()
+        let spy = MagicScreenSpy()
+        sut.delegate = spy
+        
+        sut.handleWithCardButtonAction()
+        
+        XCTAssertTrue(spy.didChooseScreenWithCardDelegateNotified)
     }
     
     // MARK: - Spy
     class MagicScreenSpy: MagicScreenTypeViewControllerDelegate {
-        var emptyScreenDelegateNotified = false
+        var didChooseEmptyScreenDelegateNotified = false
+        var didChooseScreenWithCardDelegateNotified = false
         
-        func didTapEmptyScreen() {
-            emptyScreenDelegateNotified = true
+        func didChooseEmptyScreen() {
+             didChooseEmptyScreenDelegateNotified = true
+        }
+        
+        func didChooseScreenWithCard() {
+           didChooseScreenWithCardDelegateNotified = true
         }
     }
 }

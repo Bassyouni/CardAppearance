@@ -9,14 +9,19 @@
 import UIKit
 
 protocol MagicScreenTypeViewControllerDelegate: class {
-    func didTapEmptyScreen()
+    func didChooseEmptyScreen()
+    func didChooseScreenWithCard()
 }
 
 final class MagicScreenTypeViewController: UIViewController {
     
     weak var delegate: MagicScreenTypeViewControllerDelegate?
     
-    func handleEmptyScreenAction() {
-        delegate?.didTapEmptyScreen()
+    func handleEmptyScreenButtonAction() {
+        delegate?.didChooseEmptyScreen()
+    }
+    
+    func handleWithCardButtonAction() {
+        delegate?.didChooseScreenWithCard()
     }
 }
