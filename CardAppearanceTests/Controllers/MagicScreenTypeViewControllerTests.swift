@@ -12,9 +12,7 @@ import XCTest
 class MagicScreenTypeViewControllerTests: XCTestCase {
     
     func test_emptyScreenButtonPressed_firesDelegateMethod() {
-        let sut = MagicScreenTypeViewController()
-        let spy = MagicScreenSpy()
-        sut.delegate = spy
+        let (sut, spy) = makeSUT()
         
         sut.handleEmptyScreenButtonAction()
         
@@ -22,13 +20,19 @@ class MagicScreenTypeViewControllerTests: XCTestCase {
     }
     
     func test_withCardButtonPressed_firesDelegateMethod() {
-        let sut = MagicScreenTypeViewController()
-        let spy = MagicScreenSpy()
-        sut.delegate = spy
+        let (sut, spy) = makeSUT()
         
         sut.handleWithCardButtonAction()
         
         XCTAssertTrue(spy.didChooseScreenWithCardDelegateNotified)
+    }
+    
+    // MARK: - Helpers
+    func makeSUT() -> (MagicScreenTypeViewController, MagicScreenSpy) {
+        let sut = MagicScreenTypeViewController()
+        let spy = MagicScreenSpy()
+        sut.delegate = spy
+        return (sut, spy)
     }
     
     // MARK: - Spy
