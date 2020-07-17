@@ -72,23 +72,7 @@ extension UIView {
     }
     
     func equalWidthAndHeight(to view: UIView, multiplier: CGFloat) {
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: self,
-                                              attribute: .width,
-                                              relatedBy: .equal,
-                                              toItem: view,
-                                              attribute: .width,
-                                              multiplier: multiplier,
-                                              constant: 0))
-        
-        constraints.append(NSLayoutConstraint(item: self,
-                                              attribute: .height,
-                                              relatedBy: .equal,
-                                              toItem: view,
-                                              attribute: .height,
-                                              multiplier: multiplier,
-                                              constant: 0))
-        
-        NSLayoutConstraint.activate(constraints)
+        widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier).isActive = true
+        heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier).isActive = true
     }
 }
