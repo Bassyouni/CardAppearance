@@ -54,6 +54,16 @@ final class MagicViewController: UIViewController {
         batteryView.setNeedsDisplay()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     // MARK: - Initialization
     private func setupViews() {
         view.backgroundColor = .black

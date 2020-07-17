@@ -93,11 +93,30 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
     }
     
+    func testIdleTimer_whenViewIsVisible_isDisabled() {
+        let (sut, _) = makeSUT()
+        
+        sut.beginAppearanceTransition(true, animated: false)
+        sut.endAppearanceTransition()
+        
+        XCTAssertTrue(UIApplication.shared.isIdleTimerDisabled)
+    }
+    
+    func testIdleTimer_whenViewDisappears_isNotDisabled() {
+        var (sut, _): (MagicViewController?, MagicViewModelMock?) = makeSUT()
+        
+        sut?.beginAppearanceTransition(false, animated: false)
+        sut?.endAppearanceTransition()
+        sut = nil
+        
+        XCTAssertFalse(UIApplication.shared.isIdleTimerDisabled)
+    }
+    
     // MARK: - Helpers
     private func makeSUT() -> (sut: MagicViewController, mockViewModel: MagicViewModelMock) {
         let mockViewModel = MagicViewModelMock()
         let sut = MagicViewController(viewModel: mockViewModel)
-        sut.loadViewIfNeeded()
+        _ = sut.view
         return (sut, mockViewModel)
     }
 }
