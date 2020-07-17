@@ -39,10 +39,12 @@ final class MagicScreenTypeViewController: UIViewController {
     }
      
     private func configureEmptyScreenButton() {
+        emptyScreenButton.setTitle("Empty Screen", for: .normal)
         emptyScreenButton.addTarget(self, action: #selector(handleEmptyScreenButtonAction), for: .touchUpInside)
     }
     
     private func configureScreenWithCardButton() {
+        screenWithCardButton.setTitle("Screen With Card", for: .normal)
         screenWithCardButton.addTarget(self, action: #selector(handleWithCardButtonAction), for: .touchUpInside)
     }
     
