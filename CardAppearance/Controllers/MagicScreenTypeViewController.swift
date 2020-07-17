@@ -78,14 +78,12 @@ final class MagicScreenTypeViewController: UIViewController {
     
     private func setupConstraints() {
         emptyScreenButton.translatesAutoresizingMaskIntoConstraints = false
-        screenWithCardButton.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         
         emptyScreenButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
         emptyScreenButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        screenWithCardButton.widthAnchor.constraint(equalTo: emptyScreenButton.widthAnchor).isActive = true
-        screenWithCardButton.heightAnchor.constraint(equalTo: emptyScreenButton.heightAnchor).isActive = true
+        screenWithCardButton.equalWidthAndHeight(to: emptyScreenButton, multiplier: 1)
         
         buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
