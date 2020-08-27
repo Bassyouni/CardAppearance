@@ -27,6 +27,10 @@
 		8C9C0AF0249609AD00B3C194 /* CreateSecondsUseCaseStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */; };
 		8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9C0AF124961A4500B3C194 /* SuitType.swift */; };
 		8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */; };
+		8CA9C3BB24F8414400E13733 /* RootCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3BA24F8414400E13733 /* RootCoordinatorTests.swift */; };
+		8CA9C3BE24F844CD00E13733 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3BD24F844CD00E13733 /* RootCoordinator.swift */; };
+		8CA9C3C024F845EE00E13733 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3BF24F845EE00E13733 /* Router.swift */; };
+		8CA9C3C224F8461200E13733 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3C124F8461200E13733 /* Coordinator.swift */; };
 		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
 		B49377AB41EF4C800A0F76BC /* libPods-CardAppearance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E48D0B62151406DA24CA1C /* libPods-CardAppearance.a */; };
 /* End PBXBuildFile section */
@@ -74,6 +78,10 @@
 		8C9C0AEF249609AD00B3C194 /* CreateSecondsUseCaseStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSecondsUseCaseStub.swift; sourceTree = "<group>"; };
 		8C9C0AF124961A4500B3C194 /* SuitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitType.swift; sourceTree = "<group>"; };
 		8CA89ED024842B4C004993DA /* MagicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicViewModelTests.swift; sourceTree = "<group>"; };
+		8CA9C3BA24F8414400E13733 /* RootCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorTests.swift; sourceTree = "<group>"; };
+		8CA9C3BD24F844CD00E13733 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		8CA9C3BF24F845EE00E13733 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		8CA9C3C124F8461200E13733 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 		D9E48D0B62151406DA24CA1C /* libPods-CardAppearance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardAppearance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA140E8AC8757143D48A2677 /* Pods-CardAppearanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearanceTests.release.xcconfig"; path = "Target Support Files/Pods-CardAppearanceTests/Pods-CardAppearanceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +201,7 @@
 		8C1E0B05246CCE2B005E5C95 /* CardAppearance */ = {
 			isa = PBXGroup;
 			children = (
+				8CA9C3BC24F844BF00E13733 /* Coordinator */,
 				8C07FBBB2494DD2800E97F94 /* Scene & App Delegate */,
 				8C07FBBE2494DD5C00E97F94 /* Models */,
 				8C29E99024954D0A00FCD778 /* Use Cases */,
@@ -210,6 +219,7 @@
 		8C1E0B1C246CCE2E005E5C95 /* CardAppearanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				8CA9C3B924F8413100E13733 /* Coordinator */,
 				8C07FBC02494DDAE00E97F94 /* Models */,
 				8C29E98D24954CAA00FCD778 /* Use Cases */,
 				8C07FBC12494DDB300E97F94 /* View Models */,
@@ -255,6 +265,24 @@
 				8C37DB54249E7DFE00618085 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8CA9C3B924F8413100E13733 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8CA9C3BA24F8414400E13733 /* RootCoordinatorTests.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8CA9C3BC24F844BF00E13733 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8CA9C3BD24F844CD00E13733 /* RootCoordinator.swift */,
+				8CA9C3BF24F845EE00E13733 /* Router.swift */,
+				8CA9C3C124F8461200E13733 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		EF2C6E8994230F5AA53A5EA0 /* Pods */ = {
@@ -421,13 +449,16 @@
 				8C1E0B29246CCFCF005E5C95 /* MagicViewModel.swift in Sources */,
 				8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */,
 				8C07FBC62494E08000E97F94 /* CardType.swift in Sources */,
+				8CA9C3BE24F844CD00E13733 /* RootCoordinator.swift in Sources */,
 				8C66F8D324C2370300520C73 /* MagicScreenTypeViewController.swift in Sources */,
+				8CA9C3C224F8461200E13733 /* Coordinator.swift in Sources */,
 				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,
 				8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */,
 				8C9C0AF224961A4500B3C194 /* SuitType.swift in Sources */,
 				8C1E0B09246CCE2B005E5C95 /* SceneDelegate.swift in Sources */,
 				8C37DB55249E7DFE00618085 /* UIView+Extension.swift in Sources */,
 				8C29E99224954D2500FCD778 /* CreateSecondsTimerUseCase.swift in Sources */,
+				8CA9C3C024F845EE00E13733 /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA9C3BB24F8414400E13733 /* RootCoordinatorTests.swift in Sources */,
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
 				8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */,
 				8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */,
