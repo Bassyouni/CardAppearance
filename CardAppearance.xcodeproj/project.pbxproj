@@ -205,11 +205,11 @@
 		8C1E0B05246CCE2B005E5C95 /* CardAppearance */ = {
 			isa = PBXGroup;
 			children = (
-				8CA9C3BC24F844BF00E13733 /* Coordinator */,
 				8C07FBBB2494DD2800E97F94 /* Scene & App Delegate */,
 				8C07FBBE2494DD5C00E97F94 /* Models */,
 				8C29E99024954D0A00FCD778 /* Use Cases */,
 				8C07FBBF2494DD6C00E97F94 /* View Models */,
+				8CA9C3BC24F844BF00E13733 /* Coordinator */,
 				8C07FBBC2494DD3700E97F94 /* Controllers */,
 				8C07FBBD2494DD5400E97F94 /* Views */,
 				8C37DB53249E7DE500618085 /* Extensions */,
@@ -223,10 +223,10 @@
 		8C1E0B1C246CCE2E005E5C95 /* CardAppearanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CA9C3B924F8413100E13733 /* Coordinator */,
 				8C07FBC02494DDAE00E97F94 /* Models */,
 				8C29E98D24954CAA00FCD778 /* Use Cases */,
 				8C07FBC12494DDB300E97F94 /* View Models */,
+				8CA9C3B924F8413100E13733 /* Coordinator */,
 				8C07FBC22494DDB900E97F94 /* Controllers */,
 				8C1E0B1F246CCE2E005E5C95 /* Info.plist */,
 			);
@@ -283,9 +283,9 @@
 		8CA9C3BC24F844BF00E13733 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				8CA9C3C124F8461200E13733 /* Coordinator.swift */,
 				8CA9C3BD24F844CD00E13733 /* RootCoordinator.swift */,
 				8CA9C3BF24F845EE00E13733 /* Router.swift */,
-				8CA9C3C124F8461200E13733 /* Coordinator.swift */,
 				8CA9C3C524F849E900E13733 /* SceneDelegateRouter.swift */,
 			);
 			path = Coordinator;

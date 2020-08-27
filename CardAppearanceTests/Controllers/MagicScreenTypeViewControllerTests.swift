@@ -11,6 +11,10 @@ import XCTest
 
 class MagicScreenTypeViewControllerTests: XCTestCase {
     
+    func test_initialState_delegateIsNotNil() {
+        XCTAssertNotNil(makeSUT().sut.delegate)
+    }
+    
     func test_emptyScreenButtonPressed_firesDelegateMethod() {
         let (sut, spy) = makeSUT()
         
@@ -41,9 +45,8 @@ class MagicScreenTypeViewControllerTests: XCTestCase {
     
     // MARK: - Helpers
     func makeSUT() -> (sut: MagicScreenTypeViewController, spy: MagicScreenSpy) {
-        let sut = MagicScreenTypeViewController()
         let spy = MagicScreenSpy()
-        sut.delegate = spy
+        let sut = MagicScreenTypeViewController(delegate: spy)
         _ = sut.view
         return (sut, spy)
     }

@@ -17,12 +17,18 @@ final class RootCoordinator: Coordinator {
     }
     
     func present(animated: Bool) {
-        let screenTypeVC = MagicScreenTypeViewController()
+        let screenTypeVC = MagicScreenTypeViewController(delegate: self)
         router.present(screenTypeVC, animated: false)
     }
-    
-    func didChooseEmptyScreenDelegateNotified() {
+}
+
+extension RootCoordinator: MagicScreenTypeViewControllerDelegate {
+    func didChooseEmptyScreen() {
         router.present(getMagicVC(), animated: true)
+    }
+    
+    func didChooseScreenWithCard() {
+        
     }
     
     private func getMagicVC() -> MagicViewController {

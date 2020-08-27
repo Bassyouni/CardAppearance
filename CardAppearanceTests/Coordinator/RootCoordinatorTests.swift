@@ -21,7 +21,7 @@ class RootCoordinatorTests: XCTestCase {
     func test_didChooseEmptyScreen_navigatesToMagicViewController() {
         let (spy, sut) = makeSUT()
         
-        sut.didChooseEmptyScreenDelegateNotified()
+        sut.didChooseEmptyScreen()
         
         XCTAssert(spy.controller is MagicViewController)
     }
@@ -29,7 +29,7 @@ class RootCoordinatorTests: XCTestCase {
     func test_didChooseEmptyScreen_navigatesWithAnimation() {
         let (spy, sut) = makeSUT()
         
-        sut.didChooseEmptyScreenDelegateNotified()
+        sut.didChooseEmptyScreen()
         
         XCTAssertTrue(spy.isAnimated!)
     }

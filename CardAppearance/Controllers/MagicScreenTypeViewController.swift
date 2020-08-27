@@ -24,6 +24,16 @@ final class MagicScreenTypeViewController: UIViewController {
     // MARK: - Variables
     weak var delegate: MagicScreenTypeViewControllerDelegate?
     
+    // MARK: - Initializers
+    init(delegate: MagicScreenTypeViewControllerDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
