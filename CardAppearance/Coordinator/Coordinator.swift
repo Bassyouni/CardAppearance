@@ -10,4 +10,6 @@ import Foundation
 
 protocol Coordinator {
     var router: Router { get }
+    
+    func present(animated: Bool)
 }

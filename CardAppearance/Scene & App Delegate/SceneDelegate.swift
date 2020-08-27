@@ -11,16 +11,16 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    lazy var coordinator = RootCoordinator(router: router)
+    lazy var router = SceneDelegateRouter(window: window!)
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let secondsUseCase = CreateSecondsTimerUseCase(scheduler: MainScheduler.instance)
-        let magicViewModel = MagicViewModel(secondsUseCase: secondsUseCase)
-        window?.rootViewController = MagicViewController(viewModel: magicViewModel)
-        window?.makeKeyAndVisible()
+        
+        coordinator.present(animated: true)
     }
 }
 

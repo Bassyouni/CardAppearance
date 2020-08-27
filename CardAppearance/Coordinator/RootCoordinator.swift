@@ -10,11 +10,15 @@ import RxSwift
 import Foundation
 
 final class RootCoordinator: Coordinator {
-    
-    internal let router: Router
+    let router: Router
     
     init(router: Router) {
         self.router = router
+    }
+    
+    func present(animated: Bool) {
+        let screenTypeVC = MagicScreenTypeViewController()
+        router.present(screenTypeVC, animated: false)
     }
     
     func didChooseEmptyScreenDelegateNotified() {
