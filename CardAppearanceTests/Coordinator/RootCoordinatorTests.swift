@@ -10,7 +10,7 @@ import XCTest
 @testable import CardAppearance
 
 class RootCoordinatorTests: XCTestCase {
-    func test_didChooseEmptyScreenDelegateNotified_navigatesToMagicViewController() {
+    func test_didChooseEmptyScreen_navigatesToMagicViewController() {
         let (spy, sut) = makeSUT()
         
         sut.didChooseEmptyScreenDelegateNotified()
@@ -18,7 +18,7 @@ class RootCoordinatorTests: XCTestCase {
         XCTAssert(spy.controller is MagicViewController)
     }
     
-    func test_didChooseEmptyScreenDelegateNotified_navigatesWithAnimation() {
+    func test_didChooseEmptyScreen_navigatesWithAnimation() {
         let (spy, sut) = makeSUT()
         
         sut.didChooseEmptyScreenDelegateNotified()

@@ -31,6 +31,7 @@
 		8CA9C3BE24F844CD00E13733 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3BD24F844CD00E13733 /* RootCoordinator.swift */; };
 		8CA9C3C024F845EE00E13733 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3BF24F845EE00E13733 /* Router.swift */; };
 		8CA9C3C224F8461200E13733 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3C124F8461200E13733 /* Coordinator.swift */; };
+		8CA9C3C424F847B400E13733 /* AppDelegateRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9C3C324F847B400E13733 /* AppDelegateRouterTests.swift */; };
 		8CAFBD8C246E09C90044BCE5 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */; };
 		B49377AB41EF4C800A0F76BC /* libPods-CardAppearance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E48D0B62151406DA24CA1C /* libPods-CardAppearance.a */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		8CA9C3BD24F844CD00E13733 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		8CA9C3BF24F845EE00E13733 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8CA9C3C124F8461200E13733 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8CA9C3C324F847B400E13733 /* AppDelegateRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateRouterTests.swift; sourceTree = "<group>"; };
 		8CAFBD8B246E09C90044BCE5 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
 		D9E48D0B62151406DA24CA1C /* libPods-CardAppearance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardAppearance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA140E8AC8757143D48A2677 /* Pods-CardAppearanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearanceTests.release.xcconfig"; path = "Target Support Files/Pods-CardAppearanceTests/Pods-CardAppearanceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA9C3BA24F8414400E13733 /* RootCoordinatorTests.swift */,
+				8CA9C3C324F847B400E13733 /* AppDelegateRouterTests.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA9C3C424F847B400E13733 /* AppDelegateRouterTests.swift in Sources */,
 				8CA9C3BB24F8414400E13733 /* RootCoordinatorTests.swift in Sources */,
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
 				8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */,
