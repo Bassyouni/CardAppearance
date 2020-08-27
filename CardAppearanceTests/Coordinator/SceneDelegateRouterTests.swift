@@ -10,6 +10,7 @@ import XCTest
 @testable import CardAppearance
 
 class SceneDelegateRouterTests: XCTestCase {
+    
     func test_onPresentCall_rootViewcontrollerIsCorrect() {
         let sut = SceneDelegateRouter(window: UIWindow())
         let mockVC = MockViewController()

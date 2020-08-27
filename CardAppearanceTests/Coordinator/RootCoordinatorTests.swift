@@ -10,6 +10,7 @@ import XCTest
 @testable import CardAppearance
 
 class RootCoordinatorTests: XCTestCase {
+    
     func test_onPresent_MagicScreenTypeVCIsRootViewController() {
         let (spy, sut) = makeSUT()
         
