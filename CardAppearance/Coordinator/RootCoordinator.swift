@@ -24,16 +24,16 @@ final class RootCoordinator: Coordinator {
 
 extension RootCoordinator: MagicScreenTypeViewControllerDelegate {
     func didChooseEmptyScreen() {
-        router.present(getMagicVC(), animated: true)
+        router.present(getMagicVC(withCard: false), animated: true)
     }
     
     func didChooseScreenWithCard() {
-        
+        router.present(getMagicVC(withCard: true), animated: true)
     }
     
-    private func getMagicVC() -> MagicViewController {
+    private func getMagicVC(withCard: Bool) -> MagicViewController {
         let secondsUseCase = CreateSecondsTimerUseCase(scheduler: MainScheduler.instance)
         let viewModel = MagicViewModel(secondsUseCase: secondsUseCase)
-        return MagicViewController(viewModel: viewModel)
+        return withCard ? BackCardMagicVC(viewModel: viewModel) : MagicViewController(viewModel: viewModel)
     }
 }

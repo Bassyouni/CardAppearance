@@ -35,6 +35,22 @@ class RootCoordinatorTests: XCTestCase {
         XCTAssertTrue(spy.isAnimated!)
     }
     
+    func test_didChoosWithCardScreen_navigatesToBackCardMagicController() {
+        let (spy, sut) = makeSUT()
+        
+        sut.didChooseScreenWithCard()
+        
+        XCTAssert(spy.controller is BackCardMagicVC)
+    }
+    
+    func test_didChoosWithCardScreen_navigatesWithAnimation() {
+        let (spy, sut) = makeSUT()
+        
+        sut.didChooseScreenWithCard()
+        
+        XCTAssertTrue(spy.isAnimated!)
+    }
+    
     // MARK: - Helpers
     private func makeSUT() -> (spy: RouterSpy, sut: RootCoordinator) {
         let spy = RouterSpy()
