@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00C4F0C327183164D6BB9A2A /* libPods-CardAppearanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EA78DE5234A71979E75BA9 /* libPods-CardAppearanceTests.a */; };
 		870B3D8A257D50D2009E61EF /* BackCardMagicVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B3D89257D50D2009E61EF /* BackCardMagicVCTests.swift */; };
+		870B3DA2257D59EA009E61EF /* BackCardMagicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B3DA1257D59EA009E61EF /* BackCardMagicVC.swift */; };
 		8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */; };
 		8C07FBC62494E08000E97F94 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07FBC52494E08000E97F94 /* CardType.swift */; };
 		8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		45670D925B1232CB877C3177 /* Pods-CardAppearanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearanceTests.debug.xcconfig"; path = "Target Support Files/Pods-CardAppearanceTests/Pods-CardAppearanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F93F123B3FEBE3AC6C064EB /* Pods-CardAppearance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearance.release.xcconfig"; path = "Target Support Files/Pods-CardAppearance/Pods-CardAppearance.release.xcconfig"; sourceTree = "<group>"; };
 		870B3D89257D50D2009E61EF /* BackCardMagicVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardMagicVCTests.swift; sourceTree = "<group>"; };
+		870B3DA1257D59EA009E61EF /* BackCardMagicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardMagicVC.swift; sourceTree = "<group>"; };
 		8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTests.swift; sourceTree = "<group>"; };
 		8C07FBC52494E08000E97F94 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		8C1B4BC7249669B70083696F /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 			children = (
 				8C1E0B0A246CCE2B005E5C95 /* MagicViewController.swift */,
 				8C66F8D224C2370300520C73 /* MagicScreenTypeViewController.swift */,
+				870B3DA1257D59EA009E61EF /* BackCardMagicVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				8C1E0B2B246CCFDF005E5C95 /* MagicViewModelInterface.swift in Sources */,
 				8C07FBC62494E08000E97F94 /* CardType.swift in Sources */,
 				8CA9C3BE24F844CD00E13733 /* RootCoordinator.swift in Sources */,
+				870B3DA2257D59EA009E61EF /* BackCardMagicVC.swift in Sources */,
 				8C66F8D324C2370300520C73 /* MagicScreenTypeViewController.swift in Sources */,
 				8CA9C3C224F8461200E13733 /* Coordinator.swift in Sources */,
 				8C1E0B0B246CCE2B005E5C95 /* MagicViewController.swift in Sources */,

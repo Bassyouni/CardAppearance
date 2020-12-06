@@ -9,30 +9,6 @@
 import XCTest
 @testable import CardAppearance
 
-class BackCardMagicVC: MagicViewController {
-    
-    var selectedCard: CardType?
-    
-    override func showCard(ofType card: CardType) {
-        if let selectedCard = selectedCard {
-            super.showCard(ofType: selectedCard)
-            self.selectedCard = nil
-        } else {
-            super.showCard(ofType: .blueBack)
-            selectedCard = card
-        }
-    }
-    
-    override func didSwipeCardImageView() {
-        guard let selectedCard = selectedCard else {
-            super.didSwipeCardImageView()
-            return
-        }
-        
-        showCard(ofType: selectedCard)
-    }
-}
-
 class BackCardMagicVCTests: XCTestCase {
 
     func testCardImageView_whenSelectedCardShouldBeShown_backCardIsShownInstead() {
@@ -72,6 +48,21 @@ class BackCardMagicVCTests: XCTestCase {
         let cardImageView = sut.view.subviews.last as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertEqual(cardImageView?.image?.pngData(), selectedCardImage?.pngData())
+    }
+    
+    func testFakeStatusBar_whenCardImageTapped_fakeStatusBarIsVisible() {
+        let (sut, mockViewModel) = makeSUT()
+        
+        XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        // this to show the actual card
+        sut.didSwipeCardImageView()
+        XCTAssertTrue(sut.fakeStatusBarContainerView.isHidden)
+        
+        // this to actully hide it
+        sut.didSwipeCardImageView()
+        XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
     }
 
     // MARK: - Helpers
