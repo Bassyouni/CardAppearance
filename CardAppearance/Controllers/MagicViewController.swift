@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class MagicViewController: UIViewController {
+class MagicViewController: UIViewController {
     
     // MARK: - UI Variables
     private let topLeadingButton = UIButton()
@@ -137,10 +137,7 @@ final class MagicViewController: UIViewController {
         viewModel.showCardObservable
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (cardType) in
-                guard let self = self else { return }
-                self.cardImageView.image = UIImage(named: cardType.imageName)
-                self.view.bringSubviewToFront(self.cardImageView)
-                self.fakeStatusBarContainerView.isHidden = true
+                self?.showCard(ofType: cardType)
             }).disposed(by: bag)
         
         
@@ -153,6 +150,12 @@ final class MagicViewController: UIViewController {
             }
             .bind(to: timeLabel.rx.text)
             .disposed(by: bag)
+    }
+    
+    func showCard(ofType card: CardType) {
+        cardImageView.image = UIImage(named: card.imageName)
+        view.bringSubviewToFront(cardImageView)
+        fakeStatusBarContainerView.isHidden = true
     }
     
     // MARK: - Actions

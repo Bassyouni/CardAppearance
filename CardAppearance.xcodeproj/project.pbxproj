@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00C4F0C327183164D6BB9A2A /* libPods-CardAppearanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EA78DE5234A71979E75BA9 /* libPods-CardAppearanceTests.a */; };
+		870B3D8A257D50D2009E61EF /* BackCardMagicVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B3D89257D50D2009E61EF /* BackCardMagicVCTests.swift */; };
 		8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */; };
 		8C07FBC62494E08000E97F94 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07FBC52494E08000E97F94 /* CardType.swift */; };
 		8C1E0B07246CCE2B005E5C95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E0B06246CCE2B005E5C95 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		27F16AE2A2EDEC773EFB8B63 /* Pods-CardAppearance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearance.debug.xcconfig"; path = "Target Support Files/Pods-CardAppearance/Pods-CardAppearance.debug.xcconfig"; sourceTree = "<group>"; };
 		45670D925B1232CB877C3177 /* Pods-CardAppearanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearanceTests.debug.xcconfig"; path = "Target Support Files/Pods-CardAppearanceTests/Pods-CardAppearanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F93F123B3FEBE3AC6C064EB /* Pods-CardAppearance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardAppearance.release.xcconfig"; path = "Target Support Files/Pods-CardAppearance/Pods-CardAppearance.release.xcconfig"; sourceTree = "<group>"; };
+		870B3D89257D50D2009E61EF /* BackCardMagicVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardMagicVCTests.swift; sourceTree = "<group>"; };
 		8C07FBC32494DE4100E97F94 /* CardTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTests.swift; sourceTree = "<group>"; };
 		8C07FBC52494E08000E97F94 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		8C1B4BC7249669B70083696F /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 				8C1E0B2C246CD1DC005E5C95 /* MagicViewModelMock.swift */,
 				8C1E0B1D246CCE2E005E5C95 /* MagicViewControllerTests.swift */,
 				8C66F8D024C2355C00520C73 /* MagicScreenTypeViewControllerTests.swift */,
+				870B3D89257D50D2009E61EF /* BackCardMagicVCTests.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -208,9 +211,9 @@
 				8C07FBBB2494DD2800E97F94 /* Scene & App Delegate */,
 				8C07FBBE2494DD5C00E97F94 /* Models */,
 				8C29E99024954D0A00FCD778 /* Use Cases */,
-				8C07FBBF2494DD6C00E97F94 /* View Models */,
 				8CA9C3BC24F844BF00E13733 /* Coordinator */,
 				8C07FBBC2494DD3700E97F94 /* Controllers */,
+				8C07FBBF2494DD6C00E97F94 /* View Models */,
 				8C07FBBD2494DD5400E97F94 /* Views */,
 				8C37DB53249E7DE500618085 /* Extensions */,
 				8C1E0B0F246CCE2E005E5C95 /* Assets.xcassets */,
@@ -476,6 +479,7 @@
 				8CA9C3C424F847B400E13733 /* SceneDelegateRouterTests.swift in Sources */,
 				8CA9C3BB24F8414400E13733 /* RootCoordinatorTests.swift in Sources */,
 				8C1E0B2D246CD1DC005E5C95 /* MagicViewModelMock.swift in Sources */,
+				870B3D8A257D50D2009E61EF /* BackCardMagicVCTests.swift in Sources */,
 				8C29E98F24954CC200FCD778 /* CreateSecondsTimerUseCaseTests.swift in Sources */,
 				8C07FBC42494DE4100E97F94 /* CardTypeTests.swift in Sources */,
 				8CA89ED124842B4C004993DA /* MagicViewModelTests.swift in Sources */,

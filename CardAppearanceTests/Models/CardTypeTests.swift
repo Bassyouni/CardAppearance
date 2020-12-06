@@ -121,6 +121,8 @@ class CardTypeTests: XCTestCase {
                 XCTAssertEqual(sut.imageName, "KC", "\(String(describing: sut)) image name is incorrect")
             case .kingOfHearts:
                 XCTAssertEqual(sut.imageName, "KH", "\(String(describing: sut)) image name is incorrect")
+            case .blueBack:
+                XCTAssertEqual(sut.imageName, "back_blue", "\(String(describing: sut)) image name is incorrect")
             }
         }
     }
@@ -242,6 +244,8 @@ class CardTypeTests: XCTestCase {
                 XCTAssertEqual(sut.numericValue, 13, "\(String(describing: sut)) numeric value is incorrect")
             case .kingOfHearts:
                 XCTAssertEqual(sut.numericValue, 13, "\(String(describing: sut)) numeric value is incorrect")
+            case .blueBack:
+                XCTAssertEqual(sut.numericValue, nil, "\(String(describing: sut)) numeric value is incorrect")
             }
         }
     }
@@ -413,6 +417,8 @@ class CardTypeTests: XCTestCase {
                         XCTAssertEqual(sut.suit, .clubs, "\(String(describing: sut)) suit is incorrect")
                    case .kingOfHearts:
                         XCTAssertEqual(sut.suit, .hearts, "\(String(describing: sut)) suit is incorrect")
+                   case .blueBack:
+                        XCTAssertEqual(sut.suit, nil, "\(String(describing: sut)) suit is incorrect")
                    }
                }
     }

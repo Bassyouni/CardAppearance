@@ -61,6 +61,7 @@ enum CardType: CaseIterable {
     case kingOfDiamonds
     case kingOfClubs
     case kingOfHearts
+    case blueBack
     
     var imageName: String {
         switch self {
@@ -116,10 +117,11 @@ enum CardType: CaseIterable {
         case .kingOfDiamonds: return "KD"
         case .kingOfClubs: return "KC"
         case .kingOfHearts: return "KH"
+        case .blueBack: return "back_blue"
         }
     }
     
-    var numericValue: Int  {
+    var numericValue: Int?  {
         switch self {
         case .aceOfSpades,
              .aceOfDiamonds,
@@ -198,6 +200,9 @@ enum CardType: CaseIterable {
              .kingOfClubs,
              .kingOfHearts:
             return 13
+            
+        case .blueBack:
+            return nil
         }
     }
     
@@ -369,7 +374,7 @@ enum CardType: CaseIterable {
         }
     }
     
-    var suit: SuitType {
+    var suit: SuitType? {
         switch self {
         case .aceOfSpades:
              return .spades
@@ -475,6 +480,9 @@ enum CardType: CaseIterable {
              return .clubs
         case .kingOfHearts:
              return .hearts
+            
+        case .blueBack:
+            return nil
         }
     }
 }

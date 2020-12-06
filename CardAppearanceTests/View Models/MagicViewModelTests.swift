@@ -239,10 +239,10 @@ class MagicViewModelTests: XCTestCase {
         sut.secondsTimeObservable
             .compactMap { Int($0) }
             .map { $0 - 10 }
-            .take(expectedCard.numericValue)
+            .take(expectedCard.numericValue!)
             .subscribe(onNext: { (second) in
                 if second == expectedCard.numericValue {
-                    sut.cardSelected(withType: expectedCard.suit)
+                    sut.cardSelected(withType: expectedCard.suit!)
                 }
             })
             .disposed(by: bag)
