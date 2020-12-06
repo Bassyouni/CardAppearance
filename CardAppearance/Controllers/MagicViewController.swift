@@ -89,7 +89,7 @@ class MagicViewController: UIViewController {
     }
     
     private func setupCardImageView() {
-        cardImageView.contentMode = .scaleAspectFit
+        cardImageView.contentMode = .scaleAspectFill
         cardImageView.isUserInteractionEnabled = true
         let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
         let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
@@ -107,7 +107,7 @@ class MagicViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        cardImageView.fillSuperview()
+        cardImageView.fillSuperview(padding: .init(top: 71, left: 0, bottom: 71, right: 0))
         
         topLeadingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
         topTrailingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
