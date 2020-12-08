@@ -72,5 +72,4 @@ class BackCardMagicVCTests: XCTestCase {
         _ = sut.view
         return (sut, mockViewModel)
     }
-
 }
