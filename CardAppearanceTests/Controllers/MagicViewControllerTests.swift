@@ -208,7 +208,6 @@ class MagicViewControllerTests: XCTestCase {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
         
-        
         XCTAssertEqual(panGesture.translationsSet.count, 0)
         panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
         

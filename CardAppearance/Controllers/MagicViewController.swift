@@ -152,6 +152,27 @@ class MagicViewController: UIViewController {
             .disposed(by: bag)
     }
     
+    // MARK: - Actions
+    @objc func didTapTopLeadingQuadrant() {
+        viewModel.didTapTopLeadingQuadrant()
+    }
+    
+    @objc func didTapTopTrailingQuadrant() {
+        viewModel.didTapTopTrailingQuadrant()
+    }
+    
+    @objc func didTapBottomLeadingQuadrant() {
+        viewModel.didTapBottomLeadingQuadrant()
+    }
+    
+    @objc func didTapBottomTrailingQuadrant() {
+        viewModel.didTapBottomTrailingQuadrant()
+    }
+    
+    @objc func didEndPanningCardOfScreen() {
+        resetFlow()
+    }
+    
     func showCard(ofType card: CardType) {
         cardImageView.image = UIImage(named: card.imageName)
         view.bringSubviewToFront(cardImageView)
@@ -174,27 +195,6 @@ class MagicViewController: UIViewController {
         default:
             return
         }
-    }
-    
-    // MARK: - Actions
-    @objc func didTapTopLeadingQuadrant() {
-        viewModel.didTapTopLeadingQuadrant()
-    }
-    
-    @objc func didTapTopTrailingQuadrant() {
-        viewModel.didTapTopTrailingQuadrant()
-    }
-    
-    @objc func didTapBottomLeadingQuadrant() {
-        viewModel.didTapBottomLeadingQuadrant()
-    }
-    
-    @objc func didTapBottomTrailingQuadrant() {
-        viewModel.didTapBottomTrailingQuadrant()
-    }
-    
-    @objc func didEndPanningCardOfScreen() {
-        resetFlow()
     }
     
     private func resetFlow() {
