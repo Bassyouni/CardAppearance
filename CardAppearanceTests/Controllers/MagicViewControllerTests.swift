@@ -123,44 +123,58 @@ class MagicViewControllerTests: XCTestCase {
     func test_gestureStateIsNotChangedOrEndedOrCancelled_doesNothing() {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
-        let originalCardCenter = sut.cardImageView.center
         
         panGesture.performPan(forState: .began, translation: .init(x: 33, y: 23))
-        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        AssertCardImageDidntMove(sut)
         
         panGesture.performPan(forState: .possible)
-        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        AssertCardImageDidntMove(sut)
         
         panGesture.performPan(forState: .began)
-        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        AssertCardImageDidntMove(sut)
         
         panGesture.performPan(forState: .failed)
-        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        AssertCardImageDidntMove(sut)
     }
     
     func test_gestureIsVertical_cardDoesNotPan() {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
-        let originalCardCenter = sut.cardImageView.center
         
         sut.showCard(ofType: .aceOfClubs)
         panGesture.performPan(forState: .changed, translation: .init(x: 0, y: 50))
         
-        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        AssertCardImageDidntMove(sut)
     }
     
     func test_gestureIsHorizontol_cardPans() {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
-        let originalCardCenter = sut.cardImageView.center
         
         panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
         
-        XCTAssertEqual(sut.cardImageView.center.x, originalCardCenter.x + 88)
-        XCTAssertEqual(sut.cardImageView.center.y, originalCardCenter.y)
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 88)
+        XCTAssertEqual(sut.cardImageConstrants?.trailing?.constant, 88)
     }
     
-    func test_gestureIsEnded_cardImageIsHidden() {
+    func test_gestureIsPannedCallBackCAllMultipleTimes_cardConstraintsUpdatesCorrectyl() {
+        let (sut, _) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        
+        panGesture.performPan(forState: .changed, translation: .init(x: 20, y: 0))
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 20)
+        XCTAssertEqual(sut.cardImageConstrants?.trailing?.constant, 20)
+    
+        panGesture.performPan(forState: .changed, translation: .init(x: 50, y: 0))
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 70)
+        XCTAssertEqual(sut.cardImageConstrants?.trailing?.constant, 70)
+        
+        panGesture.performPan(forState: .changed, translation: .init(x: -10, y: 0))
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 60)
+        XCTAssertEqual(sut.cardImageConstrants?.trailing?.constant, 60)
+    }
+    
+    func test_gestureIsEnded_cardImageIsResetedAndHidden() {
         let (sut, mockViewModel) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
         
@@ -171,9 +185,11 @@ class MagicViewControllerTests: XCTestCase {
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertNil(cardImageView?.image)
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 0)
+        XCTAssertEqual(sut.cardImageConstrants?.trailing?.constant, 0)
     }
     
-    func test_gestureIsCancelled_cardImageIsHidden() {
+    func test_gestureIsCancelled_cardImageIsResetedAndHidden() {
         let (sut, mockViewModel) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
         
@@ -184,6 +200,8 @@ class MagicViewControllerTests: XCTestCase {
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertNil(cardImageView?.image)
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 0)
+        XCTAssertEqual(sut.cardImageConstrants?.trailing?.constant, 0)
     }
     
     func test_gestureIsPanned_setsTranslationToZero() {
@@ -218,6 +236,11 @@ class MagicViewControllerTests: XCTestCase {
     
     private func getCardPanGesture(from sut: MagicViewController) -> TestableUIPanGestureRecognizer {
         return sut.cardPanGesture as! TestableUIPanGestureRecognizer
+    }
+    
+    private func AssertCardImageDidntMove(_ sut: MagicViewController) {
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 0)
+        XCTAssertEqual(sut.cardImageConstrants?.leading?.constant, 0)
     }
     
     class TestableUIPanGestureRecognizer: UIPanGestureRecognizer {

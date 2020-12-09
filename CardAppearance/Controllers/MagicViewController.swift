@@ -159,12 +159,13 @@ class MagicViewController: UIViewController {
     }
     
     @objc func handleCardPan(_ gesture: UIPanGestureRecognizer) {
-        guard let pannedView = gesture.view else { return }
-        
         switch gesture.state {
         case .changed:
             let translation = gesture.translation(in: view)
-            pannedView.center = .init(x: pannedView.center.x + translation.x, y: pannedView.center.y)
+            
+            cardImageConstrants?.leading?.constant += translation.x
+            cardImageConstrants?.trailing?.constant += translation.x
+            
             gesture.setTranslation(.zero, in: view)
             
         case .ended, .cancelled:
@@ -200,5 +201,7 @@ class MagicViewController: UIViewController {
         cardImageView.image = nil
         view.sendSubviewToBack(cardImageView)
         fakeStatusBarContainerView.isHidden = false
+        cardImageConstrants?.leading?.constant = 0
+        cardImageConstrants?.trailing?.constant = 0
     }
 }
