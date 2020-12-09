@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MagicViewController: UIViewController, UIGestureRecognizerDelegate {
+class MagicViewController: UIViewController {
     
     // MARK: - UI Variables
     private let topLeadingButton = UIButton()
@@ -19,9 +19,13 @@ class MagicViewController: UIViewController, UIGestureRecognizerDelegate {
     private let bottomTrailingButton = UIButton()
     
     let fakeStatusBarContainerView = UIView()
+    let cardImageView = UIImageView()
     private let timeLabel = UILabel()
     private let batteryView = BatteryView()
-    private let cardImageView = UIImageView()
+    
+    lazy var cardPanGesture: UIPanGestureRecognizer = { [weak self] in
+        return UIPanGestureRecognizer(target: self, action: #selector(self?.handleCardPan(_:)))
+    }()
     
     // MARK: - Variables
     private let viewModel: MagicViewModelInterface
@@ -91,35 +95,28 @@ class MagicViewController: UIViewController, UIGestureRecognizerDelegate {
     private func setupCardImageView() {
         cardImageView.contentMode = .scaleAspectFill
         cardImageView.isUserInteractionEnabled = true
-//        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
-//        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
-//        leftSwipeGesture.direction = .left
-//        rightSwipeGesture.direction = .right
-//        cardImageView.addGestureRecognizer(leftSwipeGesture)
-//        cardImageView.addGestureRecognizer(rightSwipeGesture)
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-    
-        cardImageView.addGestureRecognizer(panGesture)
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
+        leftSwipeGesture.direction = .left
+        rightSwipeGesture.direction = .right
+        cardImageView.addGestureRecognizer(leftSwipeGesture)
+        cardImageView.addGestureRecognizer(rightSwipeGesture)
+        cardImageView.addGestureRecognizer(cardPanGesture)
     }
     
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        gesture.delegate = self
+    @objc func handleCardPan(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .changed:
             let translation = gesture.translation(in: view)
+            gesture.view?.center = .init(x: view.center.x + translation.x, y: view.center.y)
             
-            cardImageView.center = .init(x: view.center.x + translation.x, y:  cardImageView.center.y )
-            print(translation)
+        case .ended, .cancelled:
+            resetFlow();
             
-        case .ended:
-            self.didSwipeCardImageView()
-        
-         default:
+        default:
             return
         }
     }
-    
     
     private func addTapActionsForQuadrants() {
         topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
@@ -198,6 +195,10 @@ class MagicViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func didSwipeCardImageView() {
+        resetFlow()
+    }
+    
+    private func resetFlow() {
         cardImageView.image = nil
         view.sendSubviewToBack(cardImageView)
         fakeStatusBarContainerView.isHidden = false

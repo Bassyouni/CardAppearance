@@ -112,11 +112,151 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertFalse(UIApplication.shared.isIdleTimerDisabled)
     }
     
+    // MARK: - Pan Gesture Tests
+    func test_viewDidLoad_cardImageHasPanGesture() {
+        let (sut, _) = makeSUT()
+        
+        XCTAssertNotNil(sut.cardImageView.gestureRecognizers)
+        XCTAssertEqual(sut.cardImageView.gestureRecognizers?.contains { $0 is TestableUIPanGestureRecognizer }, true)
+    }
+    
+    func test_gestureStateIsNotChangedOrEndedOrCancelled_doesNothing() {
+        let (sut, _) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        let originalCardCenter = sut.cardImageView.center
+        panGesture.setTranslation(.init(x: 33, y: 23))
+        
+        panGesture.state = .began
+        sut.perform(panGesture.action, with: panGesture)
+        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        
+        panGesture.state = .possible
+        sut.perform(panGesture.action, with: panGesture)
+        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        
+        panGesture.state = .began
+        sut.perform(panGesture.action, with: panGesture)
+        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+        
+        panGesture.state = .failed
+        sut.perform(panGesture.action, with: panGesture)
+        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+    }
+    
+    func test_gestureIsVertical_cardDoesNotPan() {
+        let (sut, _) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        let originalCardCenter = sut.view.center
+        
+        sut.showCard(ofType: .aceOfClubs)
+        panGesture.setTranslation(.init(x: 0, y: 50))
+        panGesture.state = .changed
+        sut.perform(panGesture.action, with: panGesture)
+        
+        
+        XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
+    }
+    
+    func test_gestureIsHorizontol_cardPans() {
+        let (sut, _) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        let originalCardCenter = sut.view.center
+        
+        panGesture.setTranslation(.init(x: 88, y: 0))
+        panGesture.state = .changed
+        sut.perform(panGesture.action, with: panGesture)
+        
+        
+        XCTAssertEqual(sut.cardImageView.center.x, originalCardCenter.x + 88)
+        XCTAssertEqual(sut.cardImageView.center.y, originalCardCenter.y)
+    }
+    
+    func test_gestureIsEnded_cardImageIsHidden() {
+        let (sut, mockViewModel) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        panGesture.setTranslation(.init(x: 88, y: 0))
+        panGesture.state = .changed
+        sut.perform(panGesture.action, with: panGesture)
+        
+        panGesture.state = .ended
+        sut.perform(panGesture.action, with: panGesture)
+        
+        let cardImageView = sut.view.subviews.first as? UIImageView
+        XCTAssertNotNil(cardImageView)
+        XCTAssertNil(cardImageView?.image)
+    }
+    
+    func test_gestureIsCancelled_cardImageIsHidden() {
+        let (sut, mockViewModel) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        
+        mockViewModel.showCardSubject.onNext(.aceOfClubs)
+        
+        panGesture.setTranslation(.init(x: 88, y: 0))
+        panGesture.state = .changed
+        sut.perform(panGesture.action, with: panGesture)
+        
+        panGesture.state = .cancelled
+        sut.perform(panGesture.action, with: panGesture)
+        
+        let cardImageView = sut.view.subviews.first as? UIImageView
+        XCTAssertNotNil(cardImageView)
+        XCTAssertNil(cardImageView?.image)
+    }
+    
+    
     // MARK: - Helpers
     private func makeSUT() -> (sut: MagicViewController, mockViewModel: MagicViewModelMock) {
         let mockViewModel = MagicViewModelMock()
         let sut = MagicViewController(viewModel: mockViewModel)
+        sut.cardPanGesture = TestableUIPanGestureRecognizer(target: sut, action: #selector(sut.handleCardPan(_:)))
         _ = sut.view
+        sut.view.setNeedsLayout()
+        sut.view.layoutIfNeeded()
         return (sut, mockViewModel)
+    }
+    
+    private func getCardPanGesture(from sut: MagicViewController) -> TestableUIPanGestureRecognizer {
+        return sut.cardPanGesture as! TestableUIPanGestureRecognizer
+    }
+    
+    class TestableUIPanGestureRecognizer: UIPanGestureRecognizer {
+        let target: Any?
+        let action: Selector?
+        
+        var savedTranslation: CGPoint?
+        private var savedState: UIGestureRecognizer.State?
+        
+        override init(target: Any?, action: Selector?) {
+            self.target = target
+            self.action = action
+            super.init(target: target, action: action)
+        }
+        
+        override func translation(in view: UIView?) -> CGPoint {
+            if let savedTranslation = savedTranslation {
+                return savedTranslation
+            }
+            return super.translation(in: view)
+        }
+        
+        func setTranslation(_ point: CGPoint) {
+            self.savedTranslation = point
+        }
+        
+        override var state: UIGestureRecognizer.State {
+            set {
+                self.savedState = newValue
+            }
+            get {
+                if let savedState = savedState {
+                    return savedState
+                }
+                return super.state
+            }
+        }
     }
 }
