@@ -22,9 +22,9 @@ class BackCardMagicVC: MagicViewController {
         }
     }
     
-    override func didSwipeCardImageView() {
+    override func didEndPanningCardOfScreen() {
         guard let selectedCard = selectedCard else {
-            super.didSwipeCardImageView()
+            super.didEndPanningCardOfScreen()
             return
         }
         

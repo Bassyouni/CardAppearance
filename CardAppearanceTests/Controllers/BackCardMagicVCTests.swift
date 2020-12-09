@@ -27,7 +27,7 @@ class BackCardMagicVCTests: XCTestCase {
         let selectedCardImage = UIImage(named: CardType.aceOfClubs.imageName)
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         
         let cardImageView = sut.view.subviews.last as? UIImageView
         XCTAssertNotNil(cardImageView)
@@ -40,10 +40,10 @@ class BackCardMagicVCTests: XCTestCase {
         let selectedCardImage = UIImage(named: selectetSecondType.imageName)
         
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         
         mockViewModel.showCardSubject.onNext(selectetSecondType)
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         
         let cardImageView = sut.view.subviews.last as? UIImageView
         XCTAssertNotNil(cardImageView)
@@ -57,11 +57,11 @@ class BackCardMagicVCTests: XCTestCase {
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
         // this to show the actual card
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         XCTAssertTrue(sut.fakeStatusBarContainerView.isHidden)
         
         // this to actully hide it
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
     }
 

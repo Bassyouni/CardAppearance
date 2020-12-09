@@ -66,11 +66,11 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertEqual(cardImageView?.image?.pngData(), cardImage?.pngData())
     }
     
-    func testCardImageView_whenImageTapped_cardImageIsHidden() {
+    func testCardImageView_whenImagePanned_cardImageIsHidden() {
         let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
@@ -88,7 +88,7 @@ class MagicViewControllerTests: XCTestCase {
         let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
-        sut.didSwipeCardImageView()
+        sut.didEndPanningCardOfScreen()
         
         XCTAssertFalse(sut.fakeStatusBarContainerView.isHidden)
     }

@@ -95,12 +95,6 @@ class MagicViewController: UIViewController {
     private func setupCardImageView() {
         cardImageView.contentMode = .scaleAspectFill
         cardImageView.isUserInteractionEnabled = true
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
-        leftSwipeGesture.direction = .left
-        rightSwipeGesture.direction = .right
-        cardImageView.addGestureRecognizer(leftSwipeGesture)
-        cardImageView.addGestureRecognizer(rightSwipeGesture)
         cardImageView.addGestureRecognizer(cardPanGesture)
     }
     
@@ -111,7 +105,7 @@ class MagicViewController: UIViewController {
             gesture.view?.center = .init(x: view.center.x + translation.x, y: view.center.y)
             
         case .ended, .cancelled:
-            resetFlow();
+            didEndPanningCardOfScreen();
             
         default:
             return
@@ -194,7 +188,7 @@ class MagicViewController: UIViewController {
         viewModel.didTapBottomTrailingQuadrant()
     }
     
-    @objc func didSwipeCardImageView() {
+    @objc func didEndPanningCardOfScreen() {
         resetFlow()
     }
     
