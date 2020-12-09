@@ -141,7 +141,7 @@ class MagicViewControllerTests: XCTestCase {
     func test_gestureIsVertical_cardDoesNotPan() {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
-        let originalCardCenter = sut.view.center
+        let originalCardCenter = sut.cardImageView.center
         
         sut.showCard(ofType: .aceOfClubs)
         panGesture.performPan(forState: .changed, translation: .init(x: 0, y: 50))
@@ -152,7 +152,7 @@ class MagicViewControllerTests: XCTestCase {
     func test_gestureIsHorizontol_cardPans() {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
-        let originalCardCenter = sut.view.center
+        let originalCardCenter = sut.cardImageView.center
         
         panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
         
