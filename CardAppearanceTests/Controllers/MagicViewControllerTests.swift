@@ -124,22 +124,17 @@ class MagicViewControllerTests: XCTestCase {
         let (sut, _) = makeSUT()
         let panGesture = getCardPanGesture(from: sut)
         let originalCardCenter = sut.cardImageView.center
-        panGesture.setTranslation(.init(x: 33, y: 23))
         
-        panGesture.state = .began
-        sut.perform(panGesture.action, with: panGesture)
+        panGesture.performPan(forState: .began, translation: .init(x: 33, y: 23))
         XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
         
-        panGesture.state = .possible
-        sut.perform(panGesture.action, with: panGesture)
+        panGesture.performPan(forState: .possible)
         XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
         
-        panGesture.state = .began
-        sut.perform(panGesture.action, with: panGesture)
+        panGesture.performPan(forState: .began)
         XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
         
-        panGesture.state = .failed
-        sut.perform(panGesture.action, with: panGesture)
+        panGesture.performPan(forState: .failed)
         XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
     }
     
@@ -149,10 +144,7 @@ class MagicViewControllerTests: XCTestCase {
         let originalCardCenter = sut.view.center
         
         sut.showCard(ofType: .aceOfClubs)
-        panGesture.setTranslation(.init(x: 0, y: 50))
-        panGesture.state = .changed
-        sut.perform(panGesture.action, with: panGesture)
-        
+        panGesture.performPan(forState: .changed, translation: .init(x: 0, y: 50))
         
         XCTAssertEqual(sut.cardImageView.center, originalCardCenter)
     }
@@ -162,10 +154,7 @@ class MagicViewControllerTests: XCTestCase {
         let panGesture = getCardPanGesture(from: sut)
         let originalCardCenter = sut.view.center
         
-        panGesture.setTranslation(.init(x: 88, y: 0))
-        panGesture.state = .changed
-        sut.perform(panGesture.action, with: panGesture)
-        
+        panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
         
         XCTAssertEqual(sut.cardImageView.center.x, originalCardCenter.x + 88)
         XCTAssertEqual(sut.cardImageView.center.y, originalCardCenter.y)
@@ -176,13 +165,8 @@ class MagicViewControllerTests: XCTestCase {
         let panGesture = getCardPanGesture(from: sut)
         
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
-        
-        panGesture.setTranslation(.init(x: 88, y: 0))
-        panGesture.state = .changed
-        sut.perform(panGesture.action, with: panGesture)
-        
-        panGesture.state = .ended
-        sut.perform(panGesture.action, with: panGesture)
+        panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
+        panGesture.performPan(forState: .ended)
         
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
@@ -194,19 +178,13 @@ class MagicViewControllerTests: XCTestCase {
         let panGesture = getCardPanGesture(from: sut)
         
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
-        
-        panGesture.setTranslation(.init(x: 88, y: 0))
-        panGesture.state = .changed
-        sut.perform(panGesture.action, with: panGesture)
-        
-        panGesture.state = .cancelled
-        sut.perform(panGesture.action, with: panGesture)
+        panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
+        panGesture.performPan(forState: .cancelled)
         
         let cardImageView = sut.view.subviews.first as? UIImageView
         XCTAssertNotNil(cardImageView)
         XCTAssertNil(cardImageView?.image)
     }
-    
     
     // MARK: - Helpers
     private func makeSUT() -> (sut: MagicViewController, mockViewModel: MagicViewModelMock) {
@@ -234,6 +212,13 @@ class MagicViewControllerTests: XCTestCase {
             self.target = target
             self.action = action
             super.init(target: target, action: action)
+        }
+        
+        func performPan(forState state: UIGestureRecognizer.State, translation: CGPoint = .zero) {
+            guard let target = target else { return }
+            setTranslation(translation)
+            self.state = state
+            _ = (target as AnyObject).perform(action, with: self)
         }
         
         override func translation(in view: UIView?) -> CGPoint {
