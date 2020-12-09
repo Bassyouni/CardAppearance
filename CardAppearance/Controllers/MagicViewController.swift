@@ -20,6 +20,7 @@ class MagicViewController: UIViewController {
     
     let fakeStatusBarContainerView = UIView()
     let cardImageView = UIImageView()
+    var cardImageConstrants: AnchoredConstraints?
     private let timeLabel = UILabel()
     private let batteryView = BatteryView()
     
@@ -106,7 +107,7 @@ class MagicViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        cardImageView.fillSuperview(padding: .init(top: 71, left: 0, bottom: 71, right: 0))
+        cardImageConstrants = cardImageView.fillSuperview(padding: .init(top: 71, left: 0, bottom: 71, right: 0))
         
         topLeadingButton.equalWidthAndHeight(to: view, multiplier: 0.5)
         topTrailingButton.equalWidthAndHeight(to: view, multiplier: 0.5)

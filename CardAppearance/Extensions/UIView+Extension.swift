@@ -14,61 +14,85 @@ extension UIView {
     }
 }
 
+struct AnchoredConstraints {
+    var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
+    
+    func activateAll() {
+        [
+            top,
+            leading,
+            bottom,
+            trailing,
+            width,
+            height
+        ]
+        .forEach{ $0?.isActive = true }
+    }
+}
+
 extension UIView {
+    @discardableResult
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 leading: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
                 trailing: NSLayoutXAxisAnchor? = nil,
                 padding: UIEdgeInsets = .zero,
-                size: CGSize = .zero) {
+                size: CGSize = .zero) -> AnchoredConstraints {
         
         translatesAutoresizingMaskIntoConstraints = false
-        var constraints = [NSLayoutConstraint]()
+        var anchoredConstraints = AnchoredConstraints()
         
         if let top = top {
-            constraints.append(topAnchor.constraint(equalTo: top, constant: padding.top))
+            anchoredConstraints.top = topAnchor.constraint(equalTo: top, constant: padding.top)
         }
         
         if let leading = leading {
-            constraints.append(leadingAnchor.constraint(equalTo: leading, constant: padding.left))
+            anchoredConstraints.leading = leadingAnchor.constraint(equalTo: leading, constant: padding.left)
         }
         
         if let bottom = bottom {
-            constraints.append(bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom))
+            anchoredConstraints.bottom = bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom)
         }
         
         if let trailing = trailing {
-            constraints.append(trailingAnchor.constraint(equalTo: trailing, constant: -padding.right))
+            anchoredConstraints.trailing = trailingAnchor.constraint(equalTo: trailing, constant: -padding.right)
         }
         
         if size.width != 0 {
-            constraints.append(widthAnchor.constraint(equalToConstant: size.width))
+            anchoredConstraints.width = widthAnchor.constraint(equalToConstant: size.width)
         }
         
         if size.height != 0 {
-            constraints.append(heightAnchor.constraint(equalToConstant: size.height))
+            anchoredConstraints.height = heightAnchor.constraint(equalToConstant: size.height)
         }
         
-        NSLayoutConstraint.activate(constraints)
+        anchoredConstraints.activateAll()
+        return anchoredConstraints
     }
     
-    func fillSuperview(padding: UIEdgeInsets = .zero) {
+    @discardableResult
+    func fillSuperview(padding: UIEdgeInsets = .zero) -> AnchoredConstraints {
         translatesAutoresizingMaskIntoConstraints = false
+        var anchoredConstraints = AnchoredConstraints()
+        
         if let superviewTopAnchor = superview?.topAnchor {
-            topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
+            anchoredConstraints.top = topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top)
         }
         
         if let superviewBottomAnchor = superview?.bottomAnchor {
-            bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -padding.bottom).isActive = true
+            anchoredConstraints.bottom = bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -padding.bottom)
         }
         
         if let superviewLeadingAnchor = superview?.leadingAnchor {
-            leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left).isActive = true
+            anchoredConstraints.leading = leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left)
         }
         
         if let superviewTrailingAnchor = superview?.trailingAnchor {
-            trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -padding.right).isActive = true
+            anchoredConstraints.trailing = trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -padding.right)
         }
+        
+        anchoredConstraints.activateAll()
+        return anchoredConstraints
     }
     
     func equalWidthAndHeight(to view: UIView, multiplier: CGFloat) {
