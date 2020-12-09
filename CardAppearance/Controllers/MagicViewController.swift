@@ -158,10 +158,13 @@ class MagicViewController: UIViewController {
     }
     
     @objc func handleCardPan(_ gesture: UIPanGestureRecognizer) {
+        guard let pannedView = gesture.view else { return }
+        
         switch gesture.state {
         case .changed:
             let translation = gesture.translation(in: view)
-            gesture.view?.center = .init(x: view.center.x + translation.x, y: view.center.y)
+            pannedView.center = .init(x: pannedView.center.x + translation.x, y: pannedView.center.y)
+            gesture.setTranslation(.zero, in: view)
             
         case .ended, .cancelled:
             didEndPanningCardOfScreen();

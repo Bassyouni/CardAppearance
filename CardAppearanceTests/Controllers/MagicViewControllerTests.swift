@@ -186,6 +186,25 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertNil(cardImageView?.image)
     }
     
+    func test_gestureIsPanned_setsTranslationToZero() {
+        let (sut, _) = makeSUT()
+        let panGesture = getCardPanGesture(from: sut)
+        
+        
+        XCTAssertEqual(panGesture.translationsSet.count, 0)
+        panGesture.performPan(forState: .changed, translation: .init(x: 88, y: 0))
+        
+        XCTAssertEqual(panGesture.translationsSet.count, 1)
+        XCTAssertEqual(panGesture.translationsSet[0].translation, .zero)
+        XCTAssertEqual(panGesture.translationsSet[0].view, sut.view)
+        
+        panGesture.performPan(forState: .changed, translation: .init(x: 12, y: 0))
+        
+        XCTAssertEqual(panGesture.translationsSet.count, 2)
+        XCTAssertEqual(panGesture.translationsSet[1].translation, .zero)
+        XCTAssertEqual(panGesture.translationsSet[1].view, sut.view)
+    }
+    
     // MARK: - Helpers
     private func makeSUT() -> (sut: MagicViewController, mockViewModel: MagicViewModelMock) {
         let mockViewModel = MagicViewModelMock()
@@ -204,6 +223,8 @@ class MagicViewControllerTests: XCTestCase {
     class TestableUIPanGestureRecognizer: UIPanGestureRecognizer {
         let target: Any?
         let action: Selector?
+        
+        var translationsSet = [(translation: CGPoint, view: UIView?)]()
         
         var savedTranslation: CGPoint?
         private var savedState: UIGestureRecognizer.State?
@@ -242,6 +263,11 @@ class MagicViewControllerTests: XCTestCase {
                 }
                 return super.state
             }
+        }
+        
+        override func setTranslation(_ translation: CGPoint, in view: UIView?) {
+            translationsSet.append((translation, view))
+            super.setTranslation(translation, in: view)
         }
     }
 }
