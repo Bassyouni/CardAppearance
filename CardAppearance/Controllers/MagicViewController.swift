@@ -98,20 +98,6 @@ class MagicViewController: UIViewController {
         cardImageView.addGestureRecognizer(cardPanGesture)
     }
     
-    @objc func handleCardPan(_ gesture: UIPanGestureRecognizer) {
-        switch gesture.state {
-        case .changed:
-            let translation = gesture.translation(in: view)
-            gesture.view?.center = .init(x: view.center.x + translation.x, y: view.center.y)
-            
-        case .ended, .cancelled:
-            didEndPanningCardOfScreen();
-            
-        default:
-            return
-        }
-    }
-    
     private func addTapActionsForQuadrants() {
         topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
         topTrailingButton.addTarget(self, action: #selector(didTapTopTrailingQuadrant), for: .touchUpInside)
@@ -169,6 +155,20 @@ class MagicViewController: UIViewController {
         cardImageView.image = UIImage(named: card.imageName)
         view.bringSubviewToFront(cardImageView)
         fakeStatusBarContainerView.isHidden = true
+    }
+    
+    @objc func handleCardPan(_ gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            let translation = gesture.translation(in: view)
+            gesture.view?.center = .init(x: view.center.x + translation.x, y: view.center.y)
+            
+        case .ended, .cancelled:
+            didEndPanningCardOfScreen();
+            
+        default:
+            return
+        }
     }
     
     // MARK: - Actions
