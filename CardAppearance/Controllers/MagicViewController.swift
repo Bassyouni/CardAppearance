@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MagicViewController: UIViewController {
+class MagicViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - UI Variables
     private let topLeadingButton = UIButton()
@@ -91,13 +91,35 @@ class MagicViewController: UIViewController {
     private func setupCardImageView() {
         cardImageView.contentMode = .scaleAspectFill
         cardImageView.isUserInteractionEnabled = true
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
-        leftSwipeGesture.direction = .left
-        rightSwipeGesture.direction = .right
-        cardImageView.addGestureRecognizer(leftSwipeGesture)
-        cardImageView.addGestureRecognizer(rightSwipeGesture)
+//        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
+//        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeCardImageView))
+//        leftSwipeGesture.direction = .left
+//        rightSwipeGesture.direction = .right
+//        cardImageView.addGestureRecognizer(leftSwipeGesture)
+//        cardImageView.addGestureRecognizer(rightSwipeGesture)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+    
+        cardImageView.addGestureRecognizer(panGesture)
     }
+    
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        gesture.delegate = self
+        switch gesture.state {
+        case .changed:
+            let translation = gesture.translation(in: view)
+            
+            cardImageView.center = .init(x: view.center.x + translation.x, y:  cardImageView.center.y )
+            print(translation)
+            
+        case .ended:
+            self.didSwipeCardImageView()
+        
+         default:
+            return
+        }
+    }
+    
     
     private func addTapActionsForQuadrants() {
         topLeadingButton.addTarget(self, action: #selector(didTapTopLeadingQuadrant), for: .touchUpInside)
