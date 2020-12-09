@@ -66,7 +66,7 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertEqual(cardImageView?.image?.pngData(), cardImage?.pngData())
     }
     
-    func testCardImageView_whenImagePanned_cardImageIsHidden() {
+    func testCardImageView_whenImagePannedOfScreen_cardImageIsHidden() {
         let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         
@@ -84,7 +84,7 @@ class MagicViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.fakeStatusBarContainerView.isHidden)
     }
     
-    func testFakeStatusBar_whenCardImageTapped_fakeStatusBarIsVisible() {
+    func testFakeStatusBar_whenImagePannedOfScreen_fakeStatusBarIsVisible() {
         let (sut, mockViewModel) = makeSUT()
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
         

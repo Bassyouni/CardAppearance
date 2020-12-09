@@ -22,7 +22,7 @@ class BackCardMagicVCTests: XCTestCase {
         XCTAssertEqual(cardImageView?.image?.pngData(), backCard?.pngData())
     }
     
-    func testCardImageView_whenBackCardShownThenSwipped_realCardShows() {
+    func testCardImageView_whenBackCardShownThenPannedOfScreen_realCardShows() {
         let (sut, mockViewModel) = makeSUT()
         let selectedCardImage = UIImage(named: CardType.aceOfClubs.imageName)
         mockViewModel.showCardSubject.onNext(.aceOfClubs)
