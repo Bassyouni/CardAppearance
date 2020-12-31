@@ -166,7 +166,7 @@ class MagicViewController: UIViewController {
     }
     
     @objc func didTapBottomTrailingQuadrant() {
-        viewModel.didTapBottomTrailingQuadrant()
+//        viewModel.didTapBottomTrailingQuadrant()
     }
     
     @objc func didEndPanningCardOfScreen() {
